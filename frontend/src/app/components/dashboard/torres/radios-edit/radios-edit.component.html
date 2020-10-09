@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <br>
+  <div class="container col-6">
+    <form action="" *ngFor="let item of radio" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group">
+        <label for="">Descrição</label>
+        <input type="text" class="form-control" name="descricao" ngModel [(ngModel)]="item.descricao">
+      </div>
+      <div class="row">
+        <div class="form-group col-xl-6">
+          <label for="">Marca</label>
+          <input type="text" name="marca" ngModel [(ngModel)]="item.marca" class="form-control">
+        </div>
+        <div class="form-group col-xl-6">
+          <label for="">Modelo</label>
+          <input type="text" name="modelo" ngModel [(ngModel)]="item.modelo" class="form-control">
+        </div>
+        <div class="form-group col-xl-6">
+          <label for="">Valor</label>
+          <input type="text" name="valor" ngModel [(ngModel)]="item.valor" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Antena</label>
+        <input type="text" name="antena" ngModel [(ngModel)]="item.antena" class="form-control">
+      </div>
+      <div class="row">
+        <div class="form-group col-xl-6">
+          <label for="">IP</label>
+          <input type="text" name="ip" ngModel [(ngModel)]="item.ip" class="form-control">
+        </div>
+        <div class="form-group col-xl-6">
+          <label for="">MAC</label>
+          <input type="text" name="mac" ngModel [(ngModel)]="item.mac" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-xl-6">
+          <label for="">Frequência</label>
+          <input type="number" name="frequencia" ngModel [(ngModel)]="item.frequencia" class="form-control">
+        </div>
+        <div class="form-group col-xl-6">
+          <label for="">Conexões</label>
+          <input type="text" name="numclientes" ngModel [(ngModel)]="item.numclientes" class="form-control">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Obs</label>
+        <textarea cols="30" rows="5" name="obs" ngModel [(ngModel)]="item.obs" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-success btn-block" type="submit">Salvar</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-secondary btn-block" (click)="backOff()">Voltar</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

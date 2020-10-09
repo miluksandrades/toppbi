@@ -1,0 +1,304 @@
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Conexões Altamira</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{atm}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-ethernet fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Conexões Brasil Novo</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{bn}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-ethernet fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Conexões Medicilândia</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{med}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-ethernet fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Torres</h6>
+      <button class="btn btn-success" data-toggle="modal" data-target="#ocorrencia">
+        Inserir Torre
+      </button>
+      <div class="modal fade" id="ocorrencia" tabindex="-1" aria-labelledby="ocorrenciaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ocorrenciaLabel">Nova Torre</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="">
+                <div class="row">
+                  <div class="form-group col-xl-6 col-lg-6">
+                    <label for="descricao">Descrição</label>
+                    <input name="descricao" id="descricao" [(ngModel)]="torreForm.descricao" type="text"
+                      class="form-control">
+                  </div>
+                  <div class="form-group col-xl-6 col-lg-6">
+                    <label for="ip">IP</label>
+                    <input name="ip" id="ip" [(ngModel)]="torreForm.ip" type="text" class="form-control">
+                  </div>
+                  <div class="form-group col-xl-6 col-lg-6">
+                    <label for="municipio">Município</label>
+                    <select name="municipio" id="municipio" [(ngModel)]="torreForm.municipio" class="form-control">
+                      <option value="">Selecione...</option>
+                      <option *ngFor="let item of municipios" value="{{item.id}}">{{item.descricao}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-xl-6 col-lg-6">
+                    <label for="endereco">Endereço</label>
+                    <input type="text" class="form-control" name="endereco" id="endereco"
+                      [(ngModel)]="torreForm.endereco">
+                  </div>
+                  <div class="form-group col-xl-6 col-lg-6">
+                    <label for="endereco">Bairro</label>
+                    <input type="text" class="form-control" name="bairro" id="bairro" [(ngModel)]="torreForm.bairro">
+                  </div>
+                  <div class="form-group col-xl-6 col-lg-6">
+                    <label for="endereco">Tipo de Torre</label>
+                    <input type="text" class="form-control" name="tipotorre" id="tipotorre"
+                      [(ngModel)]="torreForm.tipotorre">
+                  </div>
+                  <div class="form-group col-xl-12">
+                    <label for="">Observações</label>
+                    <textarea name="obs" [(ngModel)]="torreForm.obs" class="form-control" id="obs" cols="30"
+                      rows="5"></textarea>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" (click)="createTorre()">Salvar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xl-4 col-lg-4">
+          <h5 class="m-0 font-weight-bold">Altamira</h5>
+          <hr>
+          <div class="table-responsive">
+            <table class="table table-hover table-borderless table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Torre</th>
+                  <th>Conexões</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of torreAtm">
+                  <td>
+                    <a [routerLink]="[ '/dashboard/torres', item.id ]">{{item.descricao}}</a>
+                  </td>
+                  <td class="text-center">{{item.qtde}}</td>
+                  <td class="text-right">
+                    <a [routerLink]="[ '/dashboard/torres/edit', item.id ]" class="text-success">
+                      <button class="btn btn-success btn-sm">
+                        <i class="fas fa-pen"></i>
+                      </button>
+                    </a> &nbsp;
+                    <button class="btn btn-danger btn-sm" (click)="deleteTorre(item.id)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4">
+          <h5 class="m-0 font-weight-bold">Brasil Novo</h5>
+          <hr>
+          <div class="table-responsive">
+            <table class="table table-hover table-borderless table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Torre</th>
+                  <th>Conexões</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of torreBn">
+                  <td>
+                    <a [routerLink]="[ '/dashboard/torres', item.id ]">{{item.descricao}}</a>
+                  </td>
+                  <td class="text-center">{{item.qtde}}</td>
+                  <td class="text-right">
+                    <a [routerLink]="[ '/dashboard/torres/edit', item.id ]" class="text-success">
+                      <button class="btn btn-success btn-sm">
+                        <i class="fas fa-pen"></i>
+                      </button>
+                    </a> &nbsp;
+                    <button class="btn btn-danger btn-sm" (click)="deleteTorre(item.id)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4">
+          <h5 class="m-0 font-weight-bold">Medicilândia</h5>
+          <hr>
+          <div class="table-responsive">
+            <table class="table table-hover table-borderless table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Torre</th>
+                  <th>Conexões</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of torreMed">
+                  <td>
+                    <a [routerLink]="[ '/dashboard/torres', item.id ]">{{item.descricao}}</a>
+                  </td>
+                  <td class="text-center">{{item.qtde}}</td>
+                  <td class="text-right">
+                    <a [routerLink]="[ '/dashboard/torres/edit', item.id ]" class="text-success">
+                      <button class="btn btn-success btn-sm">
+                        <i class="fas fa-pen"></i>
+                      </button>
+                    </a> &nbsp;
+                    <button class="btn btn-danger btn-sm" (click)="deleteTorre(item.id)">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Resumo Geral</h6>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xl-4 col-lg-4">
+          <h5 class="m-0 font-weight-bold">Equipamentos</h5>
+          <hr>
+          <div class="table-responsive">
+            <table class="table table-hover table-borderless table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Equipamento</th>
+                  <th>Qtd</th>
+                  <th>Vlr Gasto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of resumoEquip">
+                  <td>
+                    {{item.descricao}}
+                  </td>
+                  <td class="text-center">{{item.qtde}}</td>
+                  <td class="text-center">R$ {{item.valor | number: '1.2-3'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4">
+          <h5 class="m-0 font-weight-bold">Rádios</h5>
+          <hr>
+          <div class="table-responsive">
+            <table class="table table-hover table-borderless table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Equipamento</th>
+                  <th>Qtd</th>
+                  <th>Vlr Gasto</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of resumoRadios">
+                  <td>
+                    {{item.descricao}}
+                  </td>
+                  <td class="text-center">{{item.qtde}}</td>
+                  <td class="text-center">R$ {{item.valor | number: '1.2-3'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-xl-4 col-lg-4">
+          <h5 class="m-0 font-weight-bold">Antenas</h5>
+          <hr>
+          <div class="table-responsive">
+            <table class="table table-hover table-borderless table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Equipamento</th>
+                  <th>Qtd</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of resumoAntena">
+                  <td>
+                    {{item.descricao}}
+                  </td>
+                  <td class="text-center">{{item.qtde}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

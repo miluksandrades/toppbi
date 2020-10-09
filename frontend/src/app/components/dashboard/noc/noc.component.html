@@ -1,0 +1,254 @@
+<div class="container-fluid">
+  <br>
+  <div class="container">
+    <div class="row justify-content-end">
+      <button class="btn btn-dark" data-toggle="modal" data-target="#ocorrencia">
+        Inserir Ocorrência
+      </button>
+      <div class="modal fade" id="ocorrencia" tabindex="-1" aria-labelledby="ocorrenciaLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ocorrenciaLabel">Nova Ocorrência</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="" autocomplete="off">
+                <div class="row">
+                  <div class="col-xl-6 col-md-12">
+                    <div class="form-group">
+                      <label for="dtinicio">Data e hora de ocorrência</label>
+                      <input name="dtinicio" id="dtinicio" type="datetime-local" required class="form-control"
+                        [(ngModel)]="ocorrenciaForm.dtinicio">
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-md-12">
+                    <div class="form-group">
+                      <label for="dtnormal">Data e hora de normalização</label>
+                      <input name="dtnormal" id="dtnormal" type="datetime-local" required class="form-control"
+                        [(ngModel)]="ocorrenciaForm.dtnormal">
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-md-12">
+                    <div class="form-group">
+                      <label for="fkoperadora">Operadora</label>
+                      <select name="fkoperadora" id="fkoperadora" required class="form-control"
+                        [(ngModel)]="ocorrenciaForm.fkoperadora">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let item of operadoras" value="{{item.id}}">{{item.descricao}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-xl-6 col-md-12">
+                    <div class="form-group">
+                      <label for="fktiporeg">Tipo de ocorrência</label>
+                      <select name="fktiporeg" id="fktiporeg" required class="form-control"
+                        [(ngModel)]="ocorrenciaForm.fktiporeg">
+                        <option value="">Selecione...</option>
+                        <option *ngFor="let item of tiporeg" value="{{item.id}}">{{item.descricao}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="motivo">Motivo</label>
+                  <textarea name="motivo" id="motivo" cols="30" rows="5" class="form-control"
+                    [(ngModel)]="ocorrenciaForm.motivo"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" (click)="createOcorrencia()">Salvar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+  <div class="row">
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Ocorrências hoje</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of taskToday">
+                {{item.total_dia}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-network-wired fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Ocorrências no Mês</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of taskMonth">
+                {{item.total_mes}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-network-wired fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Mais Quedas</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of morDown">
+                {{item.descricao}} - {{item.qtde}} Quedas
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-arrow-down fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Ocorrências por Operadora</h6>
+    </div>
+    <div class="card-body">
+      <div class="row text-center">
+        <div class="col-xl-6 col-md-12 col-sm-12 mb-3">
+          <b>BRAVA</b>
+          <canvas baseChart [data]="bravaData" [plugins]="operadoraDataLabel" [labels]="bravaLabels" [chartType]="bravaType" [options]="bravaOptions"
+            [colors]="bravaColors" [legend]="bravaLegend">
+          </canvas>
+          <hr>
+        </div>
+        <div class="col-xl-6 col-md-12 col-sm-12 mb-3">
+          <b>JUNTO</b>
+          <canvas baseChart [data]="juntoData" [plugins]="operadoraDataLabel" [labels]="juntoLabels" [chartType]="juntoType" [options]="juntoOptions"
+            [colors]="juntoColors" [legend]="juntoLegend">
+          </canvas>
+          <hr>
+        </div>
+        <div class="col-xl-6 col-md-12 col-sm-12 mb-3">
+          <b>VIVO</b>
+          <canvas baseChart [data]="vivoData" [plugins]="operadoraDataLabel" [labels]="vivoLabels" [chartType]="vivoType" [options]="vivoOptions"
+            [colors]="vivoColors" [legend]="vivoLegend">
+          </canvas>
+        </div>
+        <div class="col-xl-6 col-md-12 col-sm-12 mb-3">
+          <b>SEA</b>
+          <canvas baseChart [data]="seaData" [plugins]="operadoraDataLabel" [labels]="seaLabels" [chartType]="seaType" [options]="seaOptions"
+            [colors]="seaColors" [legend]="seaLegend">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card shadow">
+    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+      <h6 class="m-0 font-weight-bold text-primary">Ocorrências por Mês</h6>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xl-6 col-lg-6">
+          <h5 class="font-weight-bold">BRAVA</h5>
+          <canvas baseChart [datasets]="ocbravaData" [labels]="ocbravaLabels" [options]="ocbravaOptions"
+            [legend]="ocbravaLegend" [chartType]="ocbravaType" [colors]="ocbravaColors">
+          </canvas>
+          <hr>
+        </div>
+        <div class="col-xl-6 col-lg-6">
+          <h5 class="font-weight-bold">JUNTO</h5>
+          <canvas baseChart [datasets]="ocjuntoData" [labels]="ocjuntoLabels" [options]="ocjuntoOptions"
+            [legend]="ocjuntoLegend" [chartType]="ocjuntoType" [colors]="ocjuntoColors">
+          </canvas>
+          <hr>
+        </div>
+        <div class="col-xl-6 col-lg-6">
+          <h5 class="font-weight-bold">VIVO</h5>
+          <canvas baseChart [datasets]="ocvivoData" [labels]="ocvivoLabels" [options]="ocvivoOptions"
+            [legend]="ocvivoLegend" [chartType]="ocvivoType" [colors]="ocvivoColors">
+          </canvas>
+        </div>
+        <div class="col-xl-6 col-lg-6">
+          <h5 class="font-weight-bold">SEA</h5>
+          <canvas baseChart [datasets]="ocseaData" [labels]="ocseaLabels" [options]="ocseaOptions"
+            [legend]="ocseaLegend" [chartType]="ocseaType" [colors]="ocseaColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <div class="row">
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Últimas Ocorrências</h6>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <tbody>
+                <tr *ngFor="let item of ocorrencia">
+                  <td>{{item.descricao}}</td>
+                  <td>{{item.problema}}</td>
+                  <td class="text-right">{{item.dtinicio | date: 'dd/MM/yyyy - HH:mm'}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Quedas por Operadora</h6>
+        </div>
+        <div class="card-body text-light">
+          <canvas baseChart [data]="operadoraData" [labels]="operadoraLabels" [chartType]="operadoraType"
+            [options]="operadoraOptions" [plugins]="operadoraDataLabel" [colors]="operadoraColors" [legend]="operadoraLegend">
+          </canvas>
+          <br>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Total de Ocorrências por Operadora</h6>
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center"
+              *ngFor="let item of totalTask">
+              {{item.descricao}}
+              <span class="badge badge-danger badge-pill">{{item.qtde}}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

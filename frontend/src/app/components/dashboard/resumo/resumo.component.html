@@ -1,0 +1,137 @@
+<div class="container-fluid">
+  <div class="container">
+    <br>
+    <div class="row mb-3">
+      <div class="form-group">
+        <label for="">Município</label>
+        <select name="" id="" class="form-control" required (change)="getRelatorios($event)">
+          <option value="1">Selecione...</option>
+          <option *ngFor="let item of municipios" value="{{item.id}}">{{item.descricao}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Vendas no dia</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of somaDia">
+                R$ {{item.soma_dia | number: '1.2-3'}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Vendas no Mês</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of soma">R$
+                {{item.soma_mes | number: '1.2-3'}}</div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Mais vendido</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of planovendido">
+                {{item.descricao}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Vendas por mês</h6>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+            [legend]="barChartLegend" [plugins]="barChartPlugins" [chartType]="barChartType" [colors]="barChartColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Planos Vendidos</h6>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+            [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors" [legend]="pieChartLegend">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Vendas por Vendedor</h6>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [data]="vendasData" [labels]="vendasLabels" [chartType]="vendasType"
+            [options]="vendasOptions" [colors]="vendasColors" [legend]="vendasLegend">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Total recebido por plano</h6>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [data]="planoData" [labels]="planoLabels" [chartType]="planoType" [options]="planoOptions"
+            [colors]="planoColors" [legend]="planoLegend">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Vendas Totais Vendedores por Mês</h6>
+        </div>
+        <div class="card-body">
+          <select name="" id="" class="form-control" (change)="getVendedor($event)">
+            <option value="">Selecione...</option>
+            <option *ngFor="let item of vendedor" value="{{item.id}}">{{item.nome}}</option>
+          </select>
+          <canvas baseChart [datasets]="mounthData" [labels]="mounthLabels" [options]="mounthOptions"
+            [legend]="mounthLegend" [chartType]="mounthType" [colors]="mounthColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

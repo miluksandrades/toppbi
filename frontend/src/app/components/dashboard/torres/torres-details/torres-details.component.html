@@ -1,0 +1,261 @@
+<br>
+<button class="btn btn-secondary no-print" (click)="backOff()">
+  <i class="fas fa-arrow-left"></i> Voltar
+</button>
+<div class="container-fluid">
+  <br>
+  <div class="media" id="tcabecalho">
+    <div class="media-body mt-3" *ngFor="let item of torre">
+      <div class="row">
+        <div class="col">
+          <p class="mt-0"><b>Descrição:</b> {{item.descricao}}</p>
+          <p><b>IP</b>: {{item.ip}}</p>
+          <p><b>Torre</b>: {{item.tipotorre}}</p>
+          <p><b>Endereço</b>: {{item.endereco}}, {{item.bairro}} - {{item.municipio}}</p>
+        </div>
+        <div class="col">
+          <p><b>Informações da torre</b>: {{item.obs}}</p>
+          <p><b>Total de conexões</b>: {{numConexoes}}</p>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-sm no-print" (click)="print()">
+        <i class="fas fa-print"></i> Imprimir Resumo
+      </button>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-body">
+      <div class="row justify-content-end align-items-center">
+        <button class="btn btn-success" data-toggle="modal" data-target="#radio">
+          Inserir Rádio
+        </button>
+        <div class="modal fade" id="radio" tabindex="-1" aria-labelledby="radioLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="radioLabel">Novo Rádio</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="">
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="">Descrição</label>
+                      <input type="text" class="form-control" name="descricao" id="descricao"
+                        [(ngModel)]="radioForm.descricao">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">Marca</label>
+                      <select class="form-control" name="marca" id="marca" [(ngModel)]="radioForm.marca">
+                        <option value="">Selecione...</option>
+                        <option value="Mikrotik">Mikrotik</option>
+                        <option value="Ubiquiti">Ubiquiti</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">Modelo</label>
+                      <input type="text" class="form-control" name="modelo" id="modelo" [(ngModel)]="radioForm.modelo">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">Antena</label>
+                      <input type="text" class="form-control" name="antena" id="antena" [(ngModel)]="radioForm.antena">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">IP</label>
+                      <input type="text" class="form-control" name="ip" id="ip" [(ngModel)]="radioForm.ip">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">MAC</label>
+                      <input type="text" class="form-control" name="mac" id="mac" [(ngModel)]="radioForm.mac">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">Frequência</label>
+                      <input type="text" class="form-control" name="frequencia" id="frequencia"
+                        [(ngModel)]="radioForm.frequencia">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">Número de Clientes</label>
+                      <input type="number" class="form-control" name="numclientes" id="numclientes"
+                        [(ngModel)]="radioForm.numclientes">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">Valor</label>
+                      <input type="number" class="form-control" name="valor" id="valor"
+                        [(ngModel)]="radioForm.valor">
+                    </div>
+                    <div class="form-group col-12">
+                      <label for="">OBS</label>
+                      <textarea name="obs" id="obs" cols="30" rows="5" class="form-control"
+                        [(ngModel)]="radioForm.obs"></textarea>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="createRadio()">Salvar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="table-responsive" id="tradios">
+        <table class="table table-hover table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th>Descrição</th>
+              <th>Marca/Modelo</th>
+              <th>Antena</th>
+              <th>IP</th>
+              <th>MAC</th>
+              <th>Frequência</th>
+              <th>Nº Clientes</th>
+              <th>Obs</th>
+              <th class="no-print"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of radios">
+              <td>{{item.descricao}}</td>
+              <td>{{item.modelo}} - {{item.marca}}</td>
+              <td>{{item.antena}}</td>
+              <td><a target="_blank" href="http://{{item.ip}}:1978">{{item.ip}}</a></td>
+              <td>{{item.mac}}</td>
+              <td>{{item.frequencia}}</td>
+              <td>{{item.numclientes}}</td>
+              <td>{{item.obs}}</td>
+              <td class="no-print">
+                <button class="btn btn-primary btn-sm mb-3" (click)="editar(item.id)"><i
+                    class="fas fa-pen"></i></button>
+                <button class="btn btn-danger btn-sm mb-3"><i class="fas fa-trash"
+                    (click)="deleteRadio(item.id)"></i></button>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-body">
+      <div class="row justify-content-end align-items-center">
+        <button class="btn btn-success" data-toggle="modal" data-target="#equipamento">
+          Inserir Equipamento
+        </button>
+        <div class="modal fade" id="equipamento" tabindex="-1" aria-labelledby="equipamentoLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ocorrenciaLabel">Novo Equipamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="">
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="">Descrição</label>
+                      <input type="text" class="form-control" name="descricao" id="descricao"
+                        [(ngModel)]="equipamentoForm.descricao">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">Marca</label>
+                      <input type="text" class="form-control" id="marca" name="marca"
+                        [(ngModel)]="equipamentoForm.marca">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="">Quantidade</label>
+                      <input type="text" class="form-control" name="qtde" id="qtde" [(ngModel)]="equipamentoForm.qtde">
+                    </div>
+                    <div class="form-group col-12">
+                      <label for="obs">OBS</label>
+                      <textarea name="obs" id="obs" cols="30" rows="5" class="form-control"
+                        [(ngModel)]="equipamentoForm.obs"></textarea>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="createEquipamento()">Salvar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="table-responsive" id="tequip">
+        <table class="table table-hover table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th>Descrição</th>
+              <th>Marca/Modelo</th>
+              <th>Qtde</th>
+              <th>Obs</th>
+              <th class="no-print"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of equipamentos">
+              <td>{{item.descricao}}</td>
+              <td>{{item.marca}}</td>
+              <td>{{item.qtde}}</td>
+              <td>{{item.obs}}</td>
+              <td class="no-print">
+                <button class="btn btn-primary btn-sm mb-3" (click)="editarE(item.id)"><i
+                  class="fas fa-pen"></i></button> &nbsp;
+                <button class="btn btn-danger btn-sm mb-3"><i class="fas fa-trash"
+                    (click)="deleteEquipamento(item.id)"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="card">
+    <div class="card-body">
+      <div class="row justify-content-end align-items-center">
+        <button class="btn btn-success" data-toggle="modal" data-target="#imagem">
+          Inserir imagem
+        </button>
+        <div class="modal fade" id="imagem" tabindex="-1" aria-labelledby="imagemLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="ocorrenciaLabel">Inserir Imagem</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <input type="file" ng2FileSelect [uploader]="uploader" />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="uploader.uploadAll()"
+                  [disabled]="!uploader.getNotUploadedItems().length">Salvar</button>
+                <button type="button" class="btn btn-secondary" (click)="reload()" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xl-3 col-md-4 mb-3" *ngFor="let item of images">
+          <buttom class="btn btn-danger btn-sm" (click)="deleteImagem(item.id)"><i class="fas fa-trash"></i></buttom>
+          <a href="{{rota}}{{item.url}}" target="_blank">
+            <img src="{{rota}}{{item.url}}" class="img-fluid" alt="" srcset="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

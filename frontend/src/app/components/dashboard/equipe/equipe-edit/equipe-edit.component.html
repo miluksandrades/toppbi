@@ -1,0 +1,34 @@
+<!-- oninput="this.value = this.value.toUpperCase()" -->
+<div class="container-fluid">
+  <br>
+  <div class="container col-6">
+    <div class="card">
+      <div class="card-body">
+        <form *ngFor="let item of equipe" #f="ngForm" (ngSubmit)="onSubmit(f)">
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="">Responsável</label>
+              <input type="text" class="form-control" oninput="this.value = this.value.toUpperCase()" name="responsavel"
+                ngModel [(ngModel)]="item.responsavel">
+            </div>
+            <div class="form-group col-6">
+              <label for="">Auxiliar</label>
+              <input type="text" class="form-control" oninput="this.value = this.value.toUpperCase()" name="auxiliar"
+                ngModel [(ngModel)]="item.auxiliar">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-6">
+                <button class="btn btn-success btn-block" type="submit">Salvar</button>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-secondary btn-block" type="button" (click)="backOff()">Voltar</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

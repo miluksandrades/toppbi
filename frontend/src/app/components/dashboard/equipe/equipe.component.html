@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <br>
+  <div class="card">
+    <div class="card-header text-right">
+      <button class="btn btn-dark" data-toggle="modal" data-target="#inserirequipe">Inserir</button>
+      <div class="modal fade" id="inserirequipe" tabindex="-1" aria-labelledby="inserirequipeLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="inserirequipeLabel">Inserir Equipe</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="" autocomplete="off">
+                <div class="row text-left">
+                  <div class="form-group col-xl-6">
+                    <label for="">Responsável</label>
+                    <input type="text" class="form-control" name="responsavel" [(ngModel)]="equipeForm.responsavel">
+                  </div>
+
+                  <div class="form-group col-xl-6">
+                    <label for="">Auxiliar</label>
+                    <input type="text" class="form-control" name="auxiliar" [(ngModel)]="equipeForm.auxiliar">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" (click)="createEquipe()">Salvar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-sm table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>#</th>
+              <th>Responsável</th>
+              <th>Auxiliar</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of pageOfItems">
+              <td>{{item.id}}</td>
+              <td>{{item.responsavel}}</td>
+              <td>{{item.auxiliar}}</td>
+              <td class="text-right">
+                <a [routerLink]="[ '/dashboard/equipes/edit', item.id ]">
+                  <button class="btn btn-sm btn-success">
+                    <i class="fas fa-pen"></i>
+                  </button>
+                </a> &nbsp;
+                <button class="btn btn-sm btn-danger" (click)="deleteEquipe(item.id)">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="mx-auto">
+      <jw-pagination class="justify-content-center" [pageSize]="5" [items]="equipes"
+        (changePage)="onChangePage($event)">
+      </jw-pagination>
+    </div>
+  </div>
+</div>

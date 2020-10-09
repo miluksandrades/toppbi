@@ -1,0 +1,43 @@
+<div class="container-fluid">
+  <br>
+  <div class="container col-6">
+    <form action="" *ngFor="let item of element" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="form-group">
+        <label for="descricao">Descrição</label>
+        <input type="text" class="form-control" name="descricao" id="descricao" ngModel [(ngModel)]="item.descricao">
+      </div>
+      <div class="form-group">
+        <label for="ip">IP</label>
+        <input type="text" class="form-control" id="ip" name="ip" ngModel [(ngModel)]="item.ip">
+      </div>
+      <div class="form-group">
+        <label for="endereco">Endereço</label>
+        <input type="text" class="form-control" name="endereco" id="endereco" [(ngModel)]="item.endereco" ngModel >
+      </div>
+      <div class="form-group">
+        <label for="endereco">Bairro</label>
+        <input type="text" class="form-control" name="bairro" id="bairro" [(ngModel)]="item.bairro" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="endereco">Tipo de Torre</label>
+        <input type="text" class="form-control" name="tipotorre" id="tipotorre" [(ngModel)]="item.tipotorre" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="endereco">Observações</label>
+        <textarea name="obs" id="obs" [(ngModel)]="item.obs" ngModel class="form-control" cols="30" rows="5"></textarea>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-success btn-block" type="submit" >Salvar</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-secondary btn-block"
+              (click)="backOff()">Voltar</button>
+          </div>
+        </div>
+      </div>
+      <!-- {{msg}} -->
+    </form>
+  </div>
+</div>

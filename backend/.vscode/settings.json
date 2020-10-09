@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "sagitta",
+            "driver": "PostgreSQL",
+            "name": "toppbi",
+            "password": "root",
+            "port": 5432,
+            "previewLimit": 50,
+            "server": "localhost",
+            "username": "postgres"
+        }
+    ]
+}

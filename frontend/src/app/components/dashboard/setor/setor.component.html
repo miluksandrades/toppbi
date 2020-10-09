@@ -1,0 +1,62 @@
+<div class="container-fluid">
+  <div class="container mb-3">
+    <div class="row justify-content-end">
+      <button class="btn btn-success mx-3" data-toggle="modal" data-target="#newsetor">Inserir setor</button>
+    </div>
+    <div class="modal fade" id="newsetor" tabindex="-1" aria-labelledby="newsetor" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="newsetor">Novo Setor</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <form action="" autocomplete="off">
+                <div class="row">
+                  <div class="form-group col-xl-6 col-md-12">
+                    <label for="descricao">Descrição</label>
+                    <input type="text" class="form-control" name="descricao" [(ngModel)]="setorForm.descricao"
+                      id="descricao">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="novoSetor()">Salvar</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <table class="table-striped table-hover table table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Descrição</th>
+            <th scope="col" class="text-center"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let setor of setores">
+            <td>{{setor.id}}</td>
+            <td>{{setor.descricao}}</td>
+            <td>
+              <div class="row justify-content-center">
+                <button class="btn btn-sm btn-danger mx-2 mb-2" (click)="deleteSetor(setor.id)">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

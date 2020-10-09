@@ -1,0 +1,204 @@
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">KM Rodados no Mês</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{kmrodados}} KM
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-tachometer-alt fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-danger shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Litros usados no Mês</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{litrosgastos}} L
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-gas-pump fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Custo Combustível no Mês</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                R$ {{customensal}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Média de Consumo por KM</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of custoporkm">
+                R$ {{item.avg | number: '1.2-2'}} / KM
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Média KM por Litro</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of kmporlitro" >
+                {{item.avg | number: '1.2-2'}} Km/L
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-truck fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-md-12 col-sm-12 mb-3">
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">
+            <i class="fas fa-car"></i>
+            Carros
+          </h6>
+          <button class="btn btn-dark" data-toggle="modal" data-target="#inserircarro">Inserir</button>
+          <div class="modal fade" id="inserircarro" tabindex="-1" aria-labelledby="inserircarroLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="inserircarroLabel">Inserir Carro</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="" autocomplete="off">
+                    <div class="row text-left">
+                      <div class="form-group col-4">
+                        <label for="">Marca</label>
+                        <input type="text" class="form-control" name="marca" [(ngModel)]="carroForm.marca">
+                      </div>
+                      <div class="form-group col-5">
+                        <label for="">Modelo</label>
+                        <input type="text" class="form-control" name="modelo" [(ngModel)]="carroForm.modelo">
+                      </div>
+                      <div class="form-group col-3">
+                        <label for="">Placa</label>
+                        <input type="text" class="form-control" name="placa" [(ngModel)]="carroForm.placa">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-8">
+                        <label for="">Chassi</label>
+                        <input type="text" class="form-control" name="chassi" [(ngModel)]="carroForm.chassi">
+                      </div>
+                      <div class="form-group col-4">
+                        <label for="">Ano / Modelo</label>
+                        <input type="text" class="form-control" name="anomodelo" [(ngModel)]="carroForm.anomodelo">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="form-group col-6">
+                        <label for="">Equipe</label>
+                        <select name="fkequipe" [(ngModel)]="carroForm.fkequipe" class="form-control">
+                          <option *ngFor="let item of equipes" value="{{item.id}}">{{item.responsavel}}</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="">Município</label>
+                        <select name="fkmunicipio" [(ngModel)]="carroForm.fkmunicipio" class="form-control">
+                          <option *ngFor="let item of municipios" value="{{item.id}}">{{item.descricao}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="createCarro()">Salvar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-sm">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Marca</th>
+                  <th>Modelo</th>
+                  <th>Placa</th>
+                  <th>Responsável</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of pageOfItems">
+                  <td>{{item.marca}}</td>
+                  <td>{{item.modelo}}</td>
+                  <td>{{item.placa}}</td>
+                  <td>{{item.responsavel}}</td>
+                  <td class="text-right">
+                    <a [routerLink]="[ '/dashboard/frota/carro/details', item.id ]">
+                      <button class="btn btn-primary btn-sm" title="Visualizar">
+                        <i class="fas fa-eye"></i>
+                      </button>
+                    </a> &nbsp;
+                    <a [routerLink]="[ '/dashboard/frota/carro/edit', item.id ]">
+                      <button class="btn btn-sm btn-success" title="Editar">
+                        <i class="fas fa-pen"></i>
+                      </button>
+                    </a> &nbsp;
+                    <button class="btn btn-sm btn-danger" (click)="deleteCarro(item.id)" title="Deletar">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="mx-auto">
+          <jw-pagination class="justify-content-center" [pageSize]="10" [items]="carros"
+            (changePage)="onChangePage($event)"></jw-pagination>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

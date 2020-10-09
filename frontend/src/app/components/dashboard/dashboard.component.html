@@ -1,0 +1,144 @@
+<div id="wrapper">
+
+  <!-- Sidebar -->
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <div class="sidebar-brand-icon rotate-n-15">
+        <i class="fas fa-chart-pie"></i>
+      </div>
+      <div class="sidebar-brand-text mx-3">TOPPBI</div>
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+      <a routerLink="/dashboard/inicio" class="nav-link">
+        <i class="fas fa-fw fa-hand-holding-usd"></i>
+        <span>Dashboard - Comercial</span>
+      </a>
+    </li>
+    <li class="nav-item active">
+      <a routerLink="/dashboard/estoque" class="nav-link">
+        <i class="fas fa-fw fa-boxes"></i>
+        <span>Dashboard - Estoque</span>
+      </a>
+    </li>
+    <li class="nav-item active">
+      <a routerLink="/dashboard/frota" class="nav-link">
+        <i class="fas fa-fw fa-truck"></i>
+        <span>Dashboard - Frotas</span>
+      </a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dashboardnoc" aria-expanded="true"
+        aria-controls="dashboardnoc">
+        <i class="fas fa-fw fa-code-branch"></i>
+        <span>Dashboard - NOC</span>
+      </a>
+      <div id="dashboardnoc" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a routerLink="/dashboard/noc" class="collapse-item">
+            <i class="fas fa-link"></i>
+            Links
+          </a>
+          <a routerLink="/dashboard/cabos" class="collapse-item">
+            <i class="fas fa-vector-square"></i>
+            Cabos
+          </a>
+          <a routerLink="/dashboard/caixas" class="collapse-item">
+            <i class="fas fa-box"></i>
+            Caixas
+          </a>
+          <a routerLink="/dashboard/torres" class="collapse-item">
+            <i class="fas fa-broadcast-tower"></i>
+            Torres
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#dashboardsac" aria-expanded="true"
+        aria-controls="dashboardsac">
+        <i class="fas fa-fw fa-code-branch"></i>
+        <span>Dashboard - SAC/N1</span>
+      </a>
+      <div id="dashboardsac" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a routerLink="/dashboard/sac" class="collapse-item">
+            <i class="fas fa-link"></i>
+            SmartOmni
+          </a>
+          <a routerLink="/dashboard/3cx" class="collapse-item ">
+            <i class="fas fa-vector-square"></i>
+            3CX
+          </a>
+          <a routerLink="/dashboard/caixas" class="collapse-item">
+            <i class="fas fa-box"></i>
+            Caixas
+          </a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item active">
+      <a routerLink="/dashboard/suporte-tecnico" class="nav-link">
+        <i class="fas fa-tools"></i>
+        <span>Dashboard - Setor Técnico</span>
+      </a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+        aria-controls="collapsePages">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Cadastros</span>
+      </a>
+      <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a routerLink="/dashboard/planos" class="collapse-item">
+            <i class="fas fa-file"></i>
+            Planos
+          </a>
+          <a routerLink="/dashboard/setor" class="collapse-item">
+            <i class="fas fa-cubes"></i>
+            Setores
+          </a>
+          <a routerLink="/dashboard/usuarios" class="collapse-item">
+            <i class="fas fa-user-plus"></i>
+            Usuários
+          </a>
+          <a routerLink="/dashboard/equipes" class="collapse-item">
+            <i class="fas fa-users"></i>
+            Equipes
+          </a>
+          <a routerLink="/dashboard/vendedor" class="collapse-item">
+            <i class="fas fa-user-plus"></i>
+            Vendedores
+          </a>
+          <a routerLink="/dashboard/vendas" class="collapse-item">
+            <i class="fas fa-fw fa-cart-plus"></i>
+            Lançar Venda
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <router-outlet></router-outlet>
+    </div>
+    <footer class="sticky-footer bg-white">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright &copy; Lucas Andrade {{ano}}</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+</div>
+

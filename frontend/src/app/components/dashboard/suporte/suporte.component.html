@@ -1,0 +1,321 @@
+<div class="container-fluid">
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1"></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                Conversas no Whatsapp
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fab fa-whatsapp text-success fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                Conversas no Facebook
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fab fa-facebook-messenger text-primary fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1"></div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-users fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Mudança de Plano</h6>
+          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mudend">Inserir</button>
+          <div class="modal fade" id="mudend" tabindex="-1" aria-labelledby="mudendLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Novo Registro</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="">
+                    <div class="row">
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Data de Mudança de Plano</label>
+                        <input type="date" class="form-control" name="dtmudplan" [(ngModel)]="mudplanForm.dtmudplan">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Quantidade</label>
+                        <input type="text" class="form-control" name="qtde" [(ngModel)]="mudplanForm.qtde">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Município</label>
+                        <select name="fkmunicipio" id="fkmunicipio" [(ngModel)]="mudplanForm.fkmunicipio"
+                          class="form-control">
+                          <option value="">Selecione...</option>
+                          <option *ngFor="let item of municipios" value="{{item.id}}">{{item.descricao}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="createMudPlan()">Salvar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="mudplanData" [labels]="mudplanLabels" [options]="mudplanOptions"
+            [legend]="mudplanLegend" [chartType]="mudplanType" [colors]="mudplanColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Mudança de Endereço</h6>
+          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mudend">Inserir</button>
+          <div class="modal fade" id="mudend" tabindex="-1" aria-labelledby="mudendLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Novo Registro</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="">
+                    <div class="row">
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Data de Mudança de Endereço</label>
+                        <input type="date" class="form-control" name="dtmudend" [(ngModel)]="mudendForm.dtmudend">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Quantidade</label>
+                        <input type="text" class="form-control" name="qtde" [(ngModel)]="mudendForm.qtde">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Município</label>
+                        <select name="fkmunicipio" id="fkmunicipio" [(ngModel)]="mudendForm.fkmunicipio"
+                          class="form-control">
+                          <option value="">Selecione...</option>
+                          <option *ngFor="let item of municipios" value="{{item.id}}">{{item.descricao}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="createMudEnd()">Salvar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="mudendData" [labels]="mudendLabels" [options]="mudendOptions"
+            [legend]="mudendLegend" [chartType]="mudendType" [colors]="mudendColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Migração</h6>
+          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#retencao">Inserir</button>
+          <div class="modal fade" id="retencao" tabindex="-1" aria-labelledby="retencaoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Novo Registro</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="">
+                    <div class="row">
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Data Migração</label>
+                        <input type="date" class="form-control" name="dtmigracao" [(ngModel)]="migForm.dtmigracao">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Quantidade</label>
+                        <input type="text" class="form-control" name="qtde" [(ngModel)]="migForm.qtde">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Município</label>
+                        <select name="fkmunicipio" id="fkmunicipio" [(ngModel)]="migForm.fkmunicipio"
+                          class="form-control">
+                          <option value="">Selecione...</option>
+                          <option *ngFor="let item of municipios" value="{{item.id}}">{{item.descricao}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="createMig()">Salvar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="migracaoData" [labels]="migracaoLabels" [options]="migracaoOptions"
+            [legend]="migracaoLegend" [chartType]="migracaoType" [colors]="migracaoColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Retenção</h6>
+          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#retencao">Inserir</button>
+          <div class="modal fade" id="retencao" tabindex="-1" aria-labelledby="retencaoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Novo Registro</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="">
+                    <div class="row">
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Data Retenção</label>
+                        <input type="date" class="form-control" name="dtretencao" [(ngModel)]="retForm.dtretencao">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Quantidade</label>
+                        <input type="text" class="form-control" name="qtde" [(ngModel)]="retForm.qtde">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Município</label>
+                        <select name="fkmunicipio" id="fkmunicipio" [(ngModel)]="retForm.fkmunicipio"
+                          class="form-control">
+                          <option value="">Selecione...</option>
+                          <option *ngFor="let item of municipios" value="{{item.id}}">{{item.descricao}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="createRet()">Salvar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="retencaoData" [labels]="retencaoLabels" [options]="retencaoOptions"
+            [legend]="retencaoLegend" [chartType]="retencaoType" [colors]="retencaoColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-6 col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Cancelamento</h6>
+          <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#cancelamento">Inserir</button>
+          <div class="modal fade" id="cancelamento" tabindex="-1" aria-labelledby="cancelamentoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Novo Registro</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form action="">
+                    <div class="row">
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Data Cancelamento</label>
+                        <input type="date" class="form-control" name="dtcancelamento"
+                          [(ngModel)]="cancForm.dtcancelamento">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Quantidade</label>
+                        <input type="text" class="form-control" name="qtde" [(ngModel)]="cancForm.qtde">
+                      </div>
+                      <div class="form-group col-xl-6 col-lg-6">
+                        <label for="">Município</label>
+                        <select name="fkmunicipio" id="fkmunicipio" [(ngModel)]="cancForm.fkmunicipio"
+                          class="form-control">
+                          <option value="">Selecione...</option>
+                          <option *ngFor="let item of municipios" value="{{item.id}}">{{item.descricao}}</option>
+                        </select>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" (click)="createCanc()">Salvar</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="mounthData" [labels]="mounthLabels" [options]="mounthOptions"
+            [legend]="mounthLegend" [chartType]="mounthType" [colors]="mounthColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
