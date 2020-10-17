@@ -103,5 +103,12 @@ export class DadosService {
     return this.http.get(this.url + 'ocorrencias-por-mes-sea-qtd')
   }
 
+  getOcorrenciaPorMes(){
+    return this.http.get(this.url + 'ocorrencias-por-mes');
+  }
+  getOcorrenciaPorMesQtd(){
+    return this.http.get(this.url + 'ocorrencias-por-mes-qtd');
+  }
+
 
 }

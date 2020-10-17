@@ -263,7 +263,47 @@ export class NocComponent implements OnInit {
     }
   ];
 
+  public registro: any;
+  public registroqtde: any;
+  public registroOptions: ChartOptions = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: { xAxes: [{}], yAxes: [{}] },
+    plugins: {
+      datalabels: {
+        color: 'black',
+        anchor: 'end',
+        align: 'end',
+      }
+    }
+  };
+  public registroLabels: Label[] = [];
+  public registroType: ChartType = 'bar';
+  public registroLegend = true;
+  public registroData: ChartDataSets[] = [{ data: [] }];
+  public registroColors: Array<any> = [
+    { // first color
+      backgroundColor: '#1e3799',
+      borderColor: '#1e3799',
+      pointBackgroundColor: '#1e3799',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: '#1e3799'
+    }
+  ];
+
   constructor(private api: DadosService) {
+
+    this.api.getOcorrenciaPorMes().subscribe(data =>{
+      this.registro = data;
+      this.registroLabels = this.registro;
+    }, error => console.log(error))
+
+    this.api.getOcorrenciaPorMesQtd().subscribe(data =>{
+      this.registroqtde = data;
+      this.registroData = this.registroqtde;
+    }, error => console.log(error))
+    
     this.api.getOperadoras().subscribe(data => {
       this.operadoras = data;
     }, error => console.log(error));

@@ -1,0 +1,163 @@
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Atendimentos no Whatsapp</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{whatsapp}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fab fa-whatsapp text-success fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Atendimentos no Facebook</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{facebook}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="fab fa-facebook-messenger text-primary fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 col-md-6 mb-4">
+      <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total de Atendimentos</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                {{total}}
+              </div>
+            </div>
+            <div class="col-auto">
+              <i class="far fa-comments fa-2x text-danger text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lx-12 col-lg-12 mb-3">
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">
+            <i class="far fa-comments"></i>
+            Atendimentos Diário
+          </h6>
+          <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+            aria-controls="collapseExample">
+            <i class="fas fa-filter text-dark"></i>
+          </a>
+        </div>
+        <div class="card-body">
+          <div class="container collapse col-6" id="collapseExample">
+            <div class="row ">
+              <div class="form-group col-6">
+                <label for="dtinicio">Data Inicial</label>
+                <input type="date" id="dtinicio" class="form-control" [(ngModel)]="dtinicio">
+              </div>
+              <div class="form-group col-6">
+                <label for="dtfim">Data Final</label>
+                <input type="date" id="dtfim" class="form-control" [(ngModel)]="dtfim">
+              </div>
+            </div>
+            <button class="btn btn-success" (click)="getDados()">Buscar</button>
+          </div>
+          <canvas baseChart [datasets]="diaData" [labels]="diaLabels" [options]="diaOptions" [legend]="diaLegend"
+            [chartType]="diaType" [colors]="diaColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 mb-3">
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-success">
+            <i class="fab fa-whatsapp"></i>
+            Atendimentos Whatsapp
+          </h6>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="whatsData" [labels]="whatsLabels" [options]="whatsOptions"
+            [legend]="whatsLegend" [chartType]="whatsType" [colors]="whatsColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 mb-3">
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">
+            <i class="fab fa-facebook-messenger"></i>
+            Atendimentos Facebook
+          </h6>
+        </div>
+        <div class="card-body">
+          <canvas baseChart [datasets]="faceData" [labels]="faceLabels" [options]="faceOptions" [legend]="faceLegend"
+            [chartType]="faceType" [colors]="faceColors">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 mb-3">
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">
+            Atendimentos por Agente
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-xl-6">
+              <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="pieChartType"
+                [options]="pieChartOptions" [plugins]="pieChartPlugins" [colors]="pieChartColors"
+                [legend]="pieChartLegend">
+              </canvas>
+            </div>
+            <div class="col-xl-6">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Agente</th>
+                      <th class="text-center">Nº Atendimentos</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of tabela">
+                      <td>{{item.atendente}}</td>
+                      <td class="text-right">
+                        <span class="badge badge-dark">{{item.sum}}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

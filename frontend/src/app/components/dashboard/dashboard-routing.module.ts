@@ -20,6 +20,7 @@ import { CarrosEditComponent } from './frota/carros-edit/carros-edit.component';
 import { EquipeComponent } from './equipe/equipe.component';
 import { EquipeEditComponent } from './equipe/equipe-edit/equipe-edit.component';
 import { CarrosDetailsComponent } from './frota/carros-details/carros-details.component';
+import { RedesocialComponent } from './suporte/redesocial/redesocial.component';
 
 const routes: Routes = [
     { path: 'inicio', component: ResumoComponent },
@@ -40,6 +41,7 @@ const routes: Routes = [
     { path: 'radios/edit/:id', component: RadiosEditComponent },
     { path: 'equipamento/edit/:id', component: EquipamentosEditComponent },
     { path: 'sac', component: SuporteComponent },
+    { path: 'redesocial', component: RedesocialComponent },
     { path: 'suporte-tecnico', component: SuporteTecnicoComponent },
     { path: '404', component: NotFoundComponent },
     { path: '**', redirectTo: '/404' },

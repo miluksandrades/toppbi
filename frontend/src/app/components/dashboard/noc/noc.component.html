@@ -69,7 +69,7 @@
     </div>
   </div>
   <br>
-  
+
   <div class="row">
     <div class="col-xl-4 col-md-6 mb-4">
       <div class="card border-left-primary shadow h-100 py-2">
@@ -132,28 +132,28 @@
       <div class="row text-center">
         <div class="col-xl-6 col-md-12 col-sm-12 mb-3">
           <b>BRAVA</b>
-          <canvas baseChart [data]="bravaData" [plugins]="operadoraDataLabel" [labels]="bravaLabels" [chartType]="bravaType" [options]="bravaOptions"
-            [colors]="bravaColors" [legend]="bravaLegend">
+          <canvas baseChart [data]="bravaData" [plugins]="operadoraDataLabel" [labels]="bravaLabels"
+            [chartType]="bravaType" [options]="bravaOptions" [colors]="bravaColors" [legend]="bravaLegend">
           </canvas>
           <hr>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12 mb-3">
           <b>JUNTO</b>
-          <canvas baseChart [data]="juntoData" [plugins]="operadoraDataLabel" [labels]="juntoLabels" [chartType]="juntoType" [options]="juntoOptions"
-            [colors]="juntoColors" [legend]="juntoLegend">
+          <canvas baseChart [data]="juntoData" [plugins]="operadoraDataLabel" [labels]="juntoLabels"
+            [chartType]="juntoType" [options]="juntoOptions" [colors]="juntoColors" [legend]="juntoLegend">
           </canvas>
           <hr>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12 mb-3">
           <b>VIVO</b>
-          <canvas baseChart [data]="vivoData" [plugins]="operadoraDataLabel" [labels]="vivoLabels" [chartType]="vivoType" [options]="vivoOptions"
-            [colors]="vivoColors" [legend]="vivoLegend">
+          <canvas baseChart [data]="vivoData" [plugins]="operadoraDataLabel" [labels]="vivoLabels"
+            [chartType]="vivoType" [options]="vivoOptions" [colors]="vivoColors" [legend]="vivoLegend">
           </canvas>
         </div>
         <div class="col-xl-6 col-md-12 col-sm-12 mb-3">
           <b>SEA</b>
-          <canvas baseChart [data]="seaData" [plugins]="operadoraDataLabel" [labels]="seaLabels" [chartType]="seaType" [options]="seaOptions"
-            [colors]="seaColors" [legend]="seaLegend">
+          <canvas baseChart [data]="seaData" [plugins]="operadoraDataLabel" [labels]="seaLabels" [chartType]="seaType"
+            [options]="seaOptions" [colors]="seaColors" [legend]="seaLegend">
           </canvas>
         </div>
       </div>
@@ -165,7 +165,16 @@
       <h6 class="m-0 font-weight-bold text-primary">Ocorrências por Mês</h6>
     </div>
     <div class="card-body">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 mb-3">
+          <h5 class="font-weight-bold text-center">GERAL</h5>
+          <canvas class="" baseChart [datasets]="registroData" [labels]="registroLabels" [options]="registroOptions"
+            [legend]="registroLegend" [chartType]="registroType" [colors]="registroColors">
+          </canvas>
+        </div>
+      </div>
       <div class="row">
+
         <div class="col-xl-6 col-lg-6">
           <h5 class="font-weight-bold">BRAVA</h5>
           <canvas baseChart [datasets]="ocbravaData" [labels]="ocbravaLabels" [options]="ocbravaOptions"
@@ -226,7 +235,8 @@
         </div>
         <div class="card-body text-light">
           <canvas baseChart [data]="operadoraData" [labels]="operadoraLabels" [chartType]="operadoraType"
-            [options]="operadoraOptions" [plugins]="operadoraDataLabel" [colors]="operadoraColors" [legend]="operadoraLegend">
+            [options]="operadoraOptions" [plugins]="operadoraDataLabel" [colors]="operadoraColors"
+            [legend]="operadoraLegend">
           </canvas>
           <br>
         </div>

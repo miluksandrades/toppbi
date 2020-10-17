@@ -4,6 +4,7 @@ import { ChartType, ChartOptions, ChartDataSets } from 'chart.js';
 import { Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { RelatoriosService } from 'src/app/services/relatorios.service';
+import { AtendimentoService } from 'src/app/services/atendimento.service';
 
 @Component({
   selector: 'app-suporte',
@@ -211,32 +212,33 @@ export class SuporteComponent implements OnInit {
       this.migracaoLabels = this.mig;
     }, error => console.error(error));
 
-    this.api.getMigPorMesQtde().subscribe(data =>{
+    this.api.getMigPorMesQtde().subscribe(data => {
       this.mqtde = data;
       this.migracaoData = this.mqtde;
     }, error => console.error(error));
 
-    this.relatorios.getMunicipio().subscribe(data =>{
+    this.relatorios.getMunicipio().subscribe(data => {
       this.municipios = data;
     }, error => console.error(error));
 
-    this.api.getMudEndPorMes().subscribe(data =>{
+    this.api.getMudEndPorMes().subscribe(data => {
       this.mudend = data;
       this.mudendLabels = this.mudend;
     }, error => console.error(error));
-    this.api.getMudEndPorMesQtde().subscribe(data =>{
+    this.api.getMudEndPorMesQtde().subscribe(data => {
       this.meqtde = data;
       this.mudendData = this.meqtde;
     }, error => console.error(error));
 
-    this.api.getMudPlanPorMes().subscribe(data =>{
+    this.api.getMudPlanPorMes().subscribe(data => {
       this.mudplan = data;
       this.mudplanLabels = this.mudplan;
     }, error => console.error(error));
-    this.api.getMudPlanPorMesQtde().subscribe(data =>{
+    this.api.getMudPlanPorMesQtde().subscribe(data => {
       this.mpqtde = data;
       this.mudplanData = this.mpqtde;
     }, error => console.error(error));
+    
   }
 
   createCanc() {
@@ -250,50 +252,50 @@ export class SuporteComponent implements OnInit {
       location.reload();
     }, error => console.error(error))
   }
-  createRet(){
+  createRet() {
     var data = {
       dtretencao: this.retForm.dtretencao,
       qtde: this.retForm.qtde,
       fkmunicipio: this.retForm.fkmunicipio
     }
 
-    this.api.createRet(data).subscribe(res =>{
+    this.api.createRet(data).subscribe(res => {
       console.log(res);
       location.reload();
     }, error => console.error(error))
   }
-  createMig(){
+  createMig() {
     var data = {
       dtmigracao: this.migForm.dtmigracao,
       qtde: this.migForm.qtde,
       fkmunicipio: this.migForm.fkmunicipio
     }
 
-    this.api.createMig(data).subscribe(res =>{
+    this.api.createMig(data).subscribe(res => {
       console.log(res);
       location.reload();
     }, error => console.error(error))
   }
-  createMudEnd(){
+  createMudEnd() {
     var data = {
       dtmudend: this.mudendForm.dtmudend,
       qtde: this.mudendForm.qtde,
       fkmunicipio: this.mudendForm.fkmunicipio
     }
 
-    this.api.createMudEnd(data).subscribe(res =>{
+    this.api.createMudEnd(data).subscribe(res => {
       console.log(res);
       location.reload();
     }, error => console.error(error))
   }
-  createMudPlan(){
+  createMudPlan() {
     var data = {
       dtmudplan: this.mudplanForm.dtmudplan,
       qtde: this.mudplanForm.qtde,
       fkmunicipio: this.mudplanForm.fkmunicipio
     }
 
-    this.api.createMudPlan(data).subscribe(res =>{
+    this.api.createMudPlan(data).subscribe(res => {
       console.log(res);
       location.reload();
     }, error => console.error(error))

@@ -14,6 +14,7 @@ import { DadosService } from './services/noc/dados.service';
 import { TorresService } from './services/torres.service';
 import { SuporteService } from './services/suporte.service';
 import { FrotasService } from './services/frotas.service';
+import { AtendimentoService } from './services/atendimento.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardRoutingModule } from './components/dashboard/dashboard-routing.module';;
@@ -46,6 +47,7 @@ import { CarrosEditComponent } from './components/dashboard/frota/carros-edit/ca
 import { EquipeComponent } from './components/dashboard/equipe/equipe.component';
 import { EquipeEditComponent } from './components/dashboard/equipe/equipe-edit/equipe-edit.component';
 import { CarrosDetailsComponent } from './components/dashboard/frota/carros-details/carros-details.component';
+import { RedesocialComponent } from './components/dashboard/suporte/redesocial/redesocial.component';
 
 
 @NgModule({
@@ -73,6 +75,7 @@ import { CarrosDetailsComponent } from './components/dashboard/frota/carros-deta
     EquipeComponent,
     EquipeEditComponent,
     CarrosDetailsComponent,
+    RedesocialComponent,
     
   ],
   imports: [
@@ -97,7 +100,8 @@ import { CarrosDetailsComponent } from './components/dashboard/frota/carros-deta
     DadosService,
     TorresService,
     SuporteService,
-    FrotasService
+    FrotasService,
+    AtendimentoService
   ],
   bootstrap: [AppComponent]
 })

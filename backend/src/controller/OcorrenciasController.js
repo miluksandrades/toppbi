@@ -243,6 +243,66 @@ module.exports = {
         res.status(200).json(q)
     },
 
+    async getOcorrenciaPorMes(req, res) {
+        var mes = []
+        //var qtd = []
+        const operadora = await knex('ocorrencia')
+            .column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtinicio) = 1 THEN 'Jan'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 2 THEN 'Fev'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 3 THEN 'Mar'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 4 THEN 'Abr'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 5 THEN 'Mai'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 6 THEN 'Jun'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 7 THEN 'Jul'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 8 THEN 'Ago'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 9 THEN 'Set'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 10 THEN 'Out'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 11 THEN 'Nov'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 12 THEN 'Dez'" +
+                "ELSE 'o' END as mes"))
+            .count('id')
+            .groupBy(knex.raw('EXTRACT(MONTH FROM dtinicio)'))
+            .orderBy(knex.raw('EXTRACT(MONTH FROM dtinicio)'), 'asc')
+        
+        operadora.forEach(e =>{
+            mes.push(e['mes'])
+            //qtd.push(e['count'])
+        })
+
+        return res.status(200).json(mes)
+    },
+    async getOcorrenciaPorMesQtd(req, res) {
+        //var mes = []
+        var qtd = []
+        const operadora = await knex('ocorrencia')
+            .column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtinicio) = 1 THEN 'Jan'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 2 THEN 'Fev'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 3 THEN 'Mar'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 4 THEN 'Abr'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 5 THEN 'Mai'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 6 THEN 'Jun'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 7 THEN 'Jul'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 8 THEN 'Ago'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 9 THEN 'Set'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 10 THEN 'Out'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 11 THEN 'Nov'" +
+                "WHEN EXTRACT(MONTH FROM dtinicio) = 12 THEN 'Dez'" +
+                "ELSE 'o' END as mes"))
+            .count('id')
+            .groupBy(knex.raw('EXTRACT(MONTH FROM dtinicio)'))
+            .orderBy(knex.raw('EXTRACT(MONTH FROM dtinicio)'), 'asc')
+        
+        operadora.forEach(e =>{
+            //mes.push(e['mes'])
+            qtd.push(e['count'])
+        })
+
+        return res.status(200).json([{
+            data: qtd,
+            label: ''
+        }])
+    },
+
     async getBravaOcorrenciaPorMes(req, res) {
         var mes = []
         //var qtd = []

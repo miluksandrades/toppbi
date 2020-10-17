@@ -35,6 +35,7 @@ const RetencaoController = require('./controller/RetencaoController');
 const CarrosController = require('./controller/CarrosController');
 const EquipesController = require('./controller/EquipesController');
 const MetragemController = require('./controller/MetragemController');
+const AtendimentoController = require('./controller/AtendimentoController');
 
 //INICIO VENDAS
 
@@ -152,6 +153,8 @@ routes.get('/resultado-sea', OcorrenciasController.getSea);
 routes.get('/resultado-sea-qtde', OcorrenciasController.getSeaQtde);
 routes.get('/quedas-por-operadora', OcorrenciasController.getDownPerOperator);
 routes.get('/quedas-por-operadora-qtde', OcorrenciasController.getDownPerOperatorQtde);
+routes.get('/ocorrencias-por-mes', OcorrenciasController.getOcorrenciaPorMes);
+routes.get('/ocorrencias-por-mes-qtd', OcorrenciasController.getOcorrenciaPorMesQtd);
 routes.get('/ocorrencias-por-mes-brava', OcorrenciasController.getBravaOcorrenciaPorMes);
 routes.get('/ocorrencias-por-mes-brava-qtd', OcorrenciasController.getBravaOcorrenciaPorMesQtd);
 routes.get('/ocorrencias-por-mes-junto', OcorrenciasController.getJuntoOcorrenciaPorMes);
@@ -182,6 +185,20 @@ routes.post('/mudendereco', SuporteController.createMudEnd);
 routes.get('/mudplano', SuporteController.getMudPlan);
 routes.get('/mudplano-qtde', SuporteController.getMudPlanQtde);
 routes.post('/mudplano', SuporteController.createMudPlan);
+
+//RELATORIOS SMARTOMNI
+routes.get('/total-atendimento', AtendimentoController.getAtendimentos);
+routes.get('/atendimento-dia/:dtinicio/:dtfim', AtendimentoController.getAtendimentoDia);
+routes.get('/atendimento-qtd/:dtinicio/:dtfim', AtendimentoController.getAtendimentoQtd);
+routes.get('/atendimento-por-agente', AtendimentoController.getAtendimentosPorAgente);
+routes.get('/atendimento-por-agente-tabela', AtendimentoController.getAtendimentosPorAgenteTabela);
+routes.get('/atendimento-por-agente-qtd', AtendimentoController.getAtendimentosPorAgenteQtd);
+routes.get('/atendimento-whatsapp', AtendimentoController.getAtendimentoWhatsapp);
+routes.get('/atendimento-whatsapp-mes', AtendimentoController.getAtendimentoWhatsappMes);
+routes.get('/atendimento-whatsapp-qtd', AtendimentoController.getAtendimentoWhatsappQtde);
+routes.get('/atendimento-facebook-mes', AtendimentoController.getAtendimentoFacebookMes);
+routes.get('/atendimento-facebook-qtd', AtendimentoController.getAtendimentoFacebookQtde);
+routes.get('/atendimento-facebook', AtendimentoController.getAtendimentoFacebook);
 //FIM SUPORTE
 
 //FROTAS

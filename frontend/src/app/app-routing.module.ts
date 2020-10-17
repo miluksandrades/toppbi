@@ -22,6 +22,7 @@ import { CarrosEditComponent } from './components/dashboard/frota/carros-edit/ca
 import { EquipeComponent } from './components/dashboard/equipe/equipe.component';
 import { EquipeEditComponent } from './components/dashboard/equipe/equipe-edit/equipe-edit.component';
 import { CarrosDetailsComponent } from './components/dashboard/frota/carros-details/carros-details.component';
+import { RedesocialComponent } from './components/dashboard/suporte/redesocial/redesocial.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent},
@@ -44,6 +45,7 @@ const routes: Routes = [
     { path: 'radios/edit/:id', component: RadiosEditComponent},
     { path: 'equipamento/edit/:id', component: EquipamentosEditComponent },
     { path: 'sac', component: SuporteComponent },
+    { path: 'redesocial', component: RedesocialComponent },
     { path: 'suporte-tecnico', component: SuporteTecnicoComponent },
   ]}
 ];
