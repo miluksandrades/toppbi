@@ -9,6 +9,8 @@ export class DashboardComponent implements OnInit {
 
   ano: any;
 
+  toggled: boolean;
+
   public lancamentos = [
     { file: 'qwywexe2334.csv', user: 'Lucas', time: '12:38:00' },
     { file: 'qwywexe2334.csv', user: 'Pedro', time: '12:35:00' },
@@ -21,6 +23,10 @@ export class DashboardComponent implements OnInit {
     let year = new Date();
 
     this.ano = year.getFullYear();
+  }
+
+  sidebarToggle(){
+    this.toggled = !this.toggled;
   }
 
   ngOnInit(): void {

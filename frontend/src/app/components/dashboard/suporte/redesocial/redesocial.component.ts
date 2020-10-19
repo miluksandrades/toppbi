@@ -214,6 +214,17 @@ export class RedesocialComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    var dtinicio = '2020-09-01';
+    var dtfim = '2020-09-30';
+    this.atendimento.getAtendimentoDia(dtinicio, dtfim).subscribe(data => {
+      this.ldia = data;
+      this.diaLabels = this.ldia;
+    })
+
+    this.atendimento.getAtendimentoQtd(dtinicio, dtfim).subscribe(data => {
+      this.qdia = data;
+      this.diaData = this.qdia;
+    })
   }
 
 }
