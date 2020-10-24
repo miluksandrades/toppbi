@@ -226,5 +226,7 @@ routes.get('/km-mes-qtd/:id', MetragemController.kmMesQtd);
 routes.get('/media-custo-km', MetragemController.mediaCustoPorKm);
 routes.get('/km-por-litro', MetragemController.mediaKmPorLitro);
 routes.get('/metragem/:id', MetragemController.getMetragemId);
+routes.get('/consumo-geral-mes', MetragemController.consumoGeralPorMes);
+routes.get('/consumo-geral-km', MetragemController.consumoGeralPorMesKm);
 
 module.exports = routes;

@@ -21,6 +21,7 @@ import { EquipeComponent } from './equipe/equipe.component';
 import { EquipeEditComponent } from './equipe/equipe-edit/equipe-edit.component';
 import { CarrosDetailsComponent } from './frota/carros-details/carros-details.component';
 import { RedesocialComponent } from './suporte/redesocial/redesocial.component';
+import { ResumoGeralComponent } from './resumo-geral/resumo-geral.component';
 
 const routes: Routes = [
     { path: 'inicio', component: ResumoComponent },

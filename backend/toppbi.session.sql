@@ -24,10 +24,10 @@
              RETURN OLD;
          END IF;
        END;
-$$ LANGUAGE 'plpgsql' SECURITY DEFINER;
+$$ LANGUAGE 'plpgsql' SECURITY DEFINER; */
 
-CREATE TRIGGER t BEFORE INSERT OR UPDATE OR DELETE ON usuario
-        FOR EACH ROW EXECUTE PROCEDURE change_trigger(); */
+CREATE TRIGGER t BEFORE INSERT OR UPDATE OR DELETE ON radios
+        FOR EACH ROW EXECUTE PROCEDURE change_trigger();
 		
 --select *from logging.t_history	
 

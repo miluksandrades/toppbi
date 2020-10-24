@@ -11,7 +11,7 @@ export class NotFoundComponent implements OnInit {
   constructor(private router: Router) { }
 
   backOff(){
-    this.router.navigate(['/dashboard'])
+    this.router.navigate([''])
   }
 
   ngOnInit(): void {

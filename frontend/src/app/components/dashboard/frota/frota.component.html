@@ -11,7 +11,7 @@
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-tachometer-alt fa-2x text-gray-300"></i>
+              <i class="fas fa-tachometer-alt fa-2x text-primary"></i>
             </div>
           </div>
         </div>
@@ -28,7 +28,7 @@
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-gas-pump fa-2x text-gray-300"></i>
+              <i class="fas fa-gas-pump fa-2x text-danger"></i>
             </div>
           </div>
         </div>
@@ -39,20 +39,20 @@
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Custo Combustível no Mês</div>
+              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Custo Combustível no Mês</div>
               <div class="h5 mb-0 font-weight-bold text-gray-800">
                 R$ {{customensal}}
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fas fa-dollar-sign fa-2x text-info"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-xl-6 col-md-6 mb-4">
-      <div class="card border-left-info shadow h-100 py-2">
+      <div class="card border-left-success shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
@@ -62,24 +62,45 @@
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+              <i class="fas fa-dollar-sign fa-2x text-success"></i>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="col-xl-6 col-md-6 mb-4">
-      <div class="card border-left-info shadow h-100 py-2">
+      <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Média KM por Litro</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of kmporlitro" >
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Média KM por Litro</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800" *ngFor="let item of kmporlitro">
                 {{item.avg | number: '1.2-2'}} Km/L
               </div>
             </div>
             <div class="col-auto">
-              <i class="fas fa-truck fa-2x text-gray-300"></i>
+              <i class="fas fa-truck fa-2x text-warning"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 mb-3">
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-dark">
+            <i class="fas fa-car"></i>
+            Resumo geral de Consumo
+          </h6>
+        </div>
+        <div class="card-body">
+          <div class="row justify-content-center">
+            <div class="col-lg-9 mb-3">
+              <canvas class="" baseChart [datasets]="consumoData" [labels]="consumoLabels" [options]="consumoOptions"
+                [legend]="consumoLegend" [chartType]="consumoType" [colors]="consumoColors">
+              </canvas>
             </div>
           </div>
         </div>

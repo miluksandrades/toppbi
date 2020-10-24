@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('../node_modules/bootswatch/dist/cosmo/bootstrap.min.css');
+/* @import url('../node_modules/bootswatch/dist/cosmo/bootstrap.min.css'); */
+@import url('assets/sb-admin-2.min.css');
 
 *:focus{
     outline: none;

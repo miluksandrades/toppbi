@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
+import { Label } from 'ng2-charts';
 import { FrotasService } from 'src/app/services/frotas.service';
 import { RelatoriosService } from 'src/app/services/relatorios.service';
 
@@ -31,6 +33,36 @@ export class FrotaComponent implements OnInit {
     fkmunicipio: ''
   }
 
+  public consumo: any;
+  public consumokm: any;
+  public consumolt: any;
+  public consumoOptions: ChartOptions = {
+    responsive: true,
+    // We use these empty structures as placeholders for dynamic theming.
+    scales: { xAxes: [{}], yAxes: [{}] },
+    plugins: {
+      datalabels: {
+        color: 'black',
+        anchor: 'end',
+        align: 'end',
+      }
+    }
+  };
+  public consumoLabels: Label[] = [];
+  public consumoType: ChartType = 'bar';
+  public consumoLegend = true;
+  public consumoData: ChartDataSets[] = [{ data: [] }];
+  public consumoColors: Array<any> = [
+    { // first color
+      backgroundColor: '#1e3799',
+      borderColor: '#1e3799',
+      pointBackgroundColor: '#1e3799',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: '#1e3799'
+    }
+  ];
+
   constructor(private api: FrotasService, private relatorio: RelatoriosService) {
     this.api.getCarros().subscribe(data => {
       this.carros = data;
@@ -62,6 +94,16 @@ export class FrotaComponent implements OnInit {
 
     this.api.mediaKmPorLitro().subscribe(data =>{
       this.kmporlitro = data;
+    })
+
+    this.api.consumoGeralMes().subscribe(data =>{
+      this.consumo = data;
+      this.consumoLabels = this.consumo;
+    })
+
+    this.api.consumoGeralKm().subscribe(data =>{
+      this.consumokm = data;
+      this.consumoData = this.consumokm;
     })
   }
 

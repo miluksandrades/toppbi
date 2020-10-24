@@ -2,7 +2,8 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" [ngClass]="{' toggled': toggled}" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" [ngClass]="{' toggled': toggled}"
+      id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="">
@@ -134,7 +135,106 @@
             <i class="fas fa-bars"></i>
           </button>
         </nav>
-        <router-outlet></router-outlet>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xl-4 col-md-6 mb-4">
+              <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Atendimento por Whatsapp</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        {{whatsapp}}
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fab fa-whatsapp fa-2x text-success"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mb-4">
+              <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Atendimento por Facebook</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                        {{facebook}}
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fab fa-facebook-messenger fa-2x text-primary"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-6 mb-4">
+              <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1"></div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+
+                      </div>
+                    </div>
+                    <div class="col-auto">
+                      <i class="fas fa-clipboard-list fa-2x text-info"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xl-12 col-lg-12 mb-3">
+              <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-dark">Resumo Geral Frota</h6>
+                </div>
+                <div class="card-body">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-9 mb-3">
+                      <canvas class="" baseChart [datasets]="consumoData" [labels]="consumoLabels"
+                        [options]="consumoOptions" [legend]="consumoLegend" [chartType]="consumoType"
+                        [colors]="consumoColors">
+                      </canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 mb-3">
+              <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-dark">Resumo de Incidentes por Operadoras</h6>
+                </div>
+                <div class="card-body">
+                  <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center"
+                      *ngFor="let item of totalTask">
+                      {{item.descricao}}
+                      <span class="badge badge-danger badge-pill" style="font-size: 12px;">{{item.qtde}}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 mb-3">
+              <div class="card">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-dark">Resumo de Atendimentos</h6>
+                </div>
+                <div class="card-body">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">

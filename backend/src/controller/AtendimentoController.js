@@ -16,7 +16,7 @@ module.exports = {
     async getAtendimentoDia(req, res){
         const {dtinicio, dtfim} = req.params;
 
-        const atendimento = await knex.column(knex.raw('EXTRACT(DAY FROM dtatendimento) as dia'))
+        const atendimento = await knex.column(knex.raw("to_char(dtatendimento, 'DD-mm') as dia"))
         .sum('qtde')
         .from('atendimento')
         .where('dtatendimento', '>=', dtinicio)
@@ -35,7 +35,7 @@ module.exports = {
     async getAtendimentoQtd(req, res){
         const {dtinicio, dtfim} = req.params;
 
-        const atendimento = await knex.column(knex.raw('EXTRACT(DAY FROM dtatendimento) as dia'))
+        const atendimento = await knex.column(knex.raw("to_char(dtatendimento, 'DD-mm') as dia"))
         .sum('qtde')
         .from('atendimento')
         .where('dtatendimento', '>=', dtinicio)

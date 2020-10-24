@@ -44,7 +44,7 @@ module.exports = {
     async getQuilometrosRodados(req, res) {
         const quilometros = await knex('metragem')
             .column(knex.raw('COALESCE(SUM(kmrodados), 0)'))
-            .where(knex.raw('Extract(month from mesreferente) = 9'))
+            .where(knex.raw('Extract(month from mesreferente) = Extract(month from Now())'))
         var qtd = []
         quilometros.forEach(e => {
             qtd.push(e['coalesce'])
@@ -56,7 +56,7 @@ module.exports = {
     async getCombustivelGasto(req, res) {
         const comb = await knex('metragem')
             .column(knex.raw('COALESCE(SUM(totallitros), 0)'))
-            .where(knex.raw('Extract(month from mesreferente) = 9'))
+            .where(knex.raw('Extract(month from mesreferente) = Extract(month from Now())'))
         var qtd = []
         comb.forEach(e => {
             qtd.push(e['coalesce'])
@@ -68,7 +68,7 @@ module.exports = {
     async custoTotalMes(req, res) {
         const data = await knex.column(knex.raw('COALESCE(SUM(custos), 0)'))
             .from('metragem')
-            .where(knex.raw('Extract(month from mesreferente) = 9'))
+            .where(knex.raw('Extract(month from mesreferente) = Extract(month from Now())'))
 
         var qtd = []
         data.forEach(e => {
@@ -204,5 +204,64 @@ module.exports = {
         }])
     },
 
+    async consumoGeralPorMes(req, res){
+        const resultado = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM mesreferente) = 1 THEN 'Janeiro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 2 THEN 'Fevereiro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 3 THEN 'Março'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 4 THEN 'Abril'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 5 THEN 'Maio'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 6 THEN 'Junho'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 7 THEN 'Julho'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 8 THEN 'Agosto'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 9 THEN 'Setembro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 10 THEN 'Outubro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 11 THEN 'Novembro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 12 THEN 'Dezembro'" +
+        "ELSE 'o' END as mes"))
+        .sum('kmrodados as kmrodados')
+        .sum('totallitros as totallitros')
+        .from('metragem')
+        .groupBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
+        .orderBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
+
+        var result = [];
+        resultado.forEach(e =>{
+            result.push(e['mes'])
+        })
+
+        return res.status(200).json(result)
+    },
+    async consumoGeralPorMesKm(req, res){
+        const resultado = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM mesreferente) = 1 THEN 'Janeiro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 2 THEN 'Fevereiro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 3 THEN 'Março'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 4 THEN 'Abril'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 5 THEN 'Maio'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 6 THEN 'Junho'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 7 THEN 'Julho'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 8 THEN 'Agosto'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 9 THEN 'Setembro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 10 THEN 'Outubro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 11 THEN 'Novembro'" +
+        "WHEN EXTRACT(MONTH FROM mesreferente) = 12 THEN 'Dezembro'" +
+        "ELSE 'o' END as mes"))
+        .sum('kmrodados as kmrodados')
+        .sum('totallitros as totallitros')
+        .from('metragem')
+        .groupBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
+        .orderBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
+
+        var result = [];
+        var result2 = [];
+        resultado.forEach(e =>{
+            result.push(e['kmrodados'])
+        })
+
+        resultado.forEach(e =>{
+            result2.push(e['totallitros'])
+        })
+
+        return res.status(200).json([{data: result, label: 'Km'}, {data: result2, label: 'Litros'},])
+    }
 
 }

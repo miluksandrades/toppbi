@@ -94,4 +94,12 @@ export class FrotasService {
   getMetragemId(id){
     return this.http.get(`${environment.BASE_URL}metragem/${id}`);
   }
+
+  consumoGeralMes(){
+    return this.http.get(environment.BASE_URL + 'consumo-geral-mes')
+  }
+
+  consumoGeralKm(){
+    return this.http.get(environment.BASE_URL + 'consumo-geral-km')
+  }
 }
