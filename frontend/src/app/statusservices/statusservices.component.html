@@ -1,0 +1,77 @@
+<div class="container">
+  <form class="">
+    <div class="row">
+      <div class="card col-xl-6 mx-auto">
+        <div class="card-body">
+          <div class="row">
+            <div class="form-group col-xl-12">
+              <label for="" class="text-dark">LINK</label>
+              <textarea name="link" id="" class="form-control" [(ngModel)]="statusForm.link">
+              </textarea>
+            </div>
+            <div class="form-group col-xl-6">
+              <label for="" class="text-dark">SMARTOMNI</label>
+              <select name="smartomni" id="" class="form-control" [(ngModel)]="statusForm.smartomni">
+                <option value="">Selecione</option>
+                <option value="OK">ON</option>
+                <option value="OFF">OFF</option>
+              </select>
+            </div>
+            <div class="form-group col-xl-6">
+              <label for="" class="text-dark">SMARTMAPS</label>
+              <select name="smartmaps" id="" class="form-control" [(ngModel)]="statusForm.smartmaps">
+                <option value="">Selecione</option>
+                <option value="OK">ON</option>
+                <option value="OFF">OFF</option>
+              </select>
+            </div>
+            <div class="form-group col-xl-12">
+              <label for="" class="text-dark">DUDE</label>
+              <textarea name="dude" id="" class="form-control" [(ngModel)]="statusForm.dude">
+                            </textarea>
+            </div>
+            <div class="form-group col-xl-6">
+              <label for="" class="text-dark">3CX</label>
+              <select name="c3x" id="" class="form-control" [(ngModel)]="statusForm.c3x">
+                <option value="">Selecione</option>
+                <option value="OK">ON</option>
+                <option value="OFF">OFF</option>
+              </select>
+            </div>
+            <div class="form-group col-xl-6">
+              <label for="" class="text-dark">VOALLE</label>
+              <select name="voalle" id="" class="form-control" [(ngModel)]="statusForm.voalle">
+                <option value="">Selecione</option>
+                <option value="OK">ON</option>
+                <option value="OFF">OFF</option>
+              </select>
+            </div>
+            <div class="form-group col-xl-12">
+              <label for="" class="text-dark">ANM2000</label>
+              <textarea type="text" name="anm" class="form-control" [(ngModel)]="statusForm.anm"></textarea>
+            </div>
+            <div class="form-group col-xl-6">
+              <label for="" class="text-dark">SMARTOLT</label>
+              <select name="smartolt" id="" class="form-control" [(ngModel)]="statusForm.smartolt">
+                <option value="">Selecione</option>
+                <option value="OK">ON</option>
+                <option value="OFF">OFF</option>
+              </select>
+            </div>
+            <div class="form-group col-xl-6">
+              <label for="" class="text-dark">USUARIO</label>
+              <select name="responsavel" id="" class="form-control" [(ngModel)]="statusForm.responsavel">
+                <option value="">Selecione</option>
+                <option value="Eng. Lucas Andrade">LUCAS</option>
+                <option value="Pedro Freitas">PEDRO</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <button class="btn btn-block btn-success" (click)="salvarStatus()">ENVIAR STATUS</button>
+        </div>
+        
+      </div>
+    </div>
+  </form>
+</div>

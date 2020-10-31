@@ -15,6 +15,8 @@ export class ResumoGeralComponent implements OnInit {
   toggled: boolean;
   whatsapp: any;
   facebook: any;
+  atendimentogeral: any;
+  somageral: any;
 
   ano: any;
 
@@ -51,6 +53,14 @@ export class ResumoGeralComponent implements OnInit {
   constructor(private api: DadosService, private frota: FrotasService, private atendimento: AtendimentoService) {
     var date = new Date();
     this.ano = date.getUTCFullYear();
+    this.atendimento.totalGeral().subscribe(data =>{
+      this.somageral = data;
+    })
+    
+    this.atendimento.getAtendimentoGeral().subscribe(data =>{
+      this.atendimentogeral = data;
+    })
+
     this.atendimento.getAtendimentoWhatsapp().subscribe(data => {
       this.whatsapp = data;
     })

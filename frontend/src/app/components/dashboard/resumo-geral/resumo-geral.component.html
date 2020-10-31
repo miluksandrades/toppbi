@@ -134,6 +134,7 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-auto" (click)="sidebarToggle()">
             <i class="fas fa-bars"></i>
           </button>
+          
         </nav>
         <div class="container-fluid">
           <div class="row">
@@ -142,7 +143,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Atendimento por Whatsapp</div>
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Atendimento por Whatsapp
+                      </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
                         {{whatsapp}}
                       </div>
@@ -159,7 +161,8 @@
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Atendimento por Facebook</div>
+                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Atendimento por Facebook
+                      </div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
                         {{facebook}}
                       </div>
@@ -229,7 +232,22 @@
                   <h6 class="m-0 font-weight-bold text-dark">Resumo de Atendimentos</h6>
                 </div>
                 <div class="card-body">
+                  <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center"
+                      *ngFor="let item of atendimentogeral">
+                      {{item.canal}}
+                      <span *ngIf="item.canal === 'WHATSAPP'" class="badge badge-success badge-pill"
+                        style="font-size: 12px;">{{item.sum}}</span>
+                      <span *ngIf="item.canal === 'FACEBOOK'" class="badge badge-primary badge-pill"
+                        style="font-size: 12px;">{{item.sum}}</span>
+                    </li>
 
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                      Total
+                      <span class="badge badge-dark badge-pill" style="font-size: 12px;">{{somageral}}</span>
+                    </li>
+
+                  </ul>
                 </div>
               </div>
             </div>

@@ -59,4 +59,12 @@ export class AtendimentoService {
     return this.http.get(this.base_url + 'atendimento-por-agente-qtd')
   }
 
+  getAtendimentoGeral(){
+    return this.http.get(this.base_url + 'atendimento-geral');
+  }
+
+  totalGeral(){
+    return this.http.get(this.base_url + 'atendimento-soma-geral');
+  }
+
 }

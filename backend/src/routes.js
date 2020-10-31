@@ -36,6 +36,7 @@ const CarrosController = require('./controller/CarrosController');
 const EquipesController = require('./controller/EquipesController');
 const MetragemController = require('./controller/MetragemController');
 const AtendimentoController = require('./controller/AtendimentoController');
+const EmailController = require('./controller/EmailController');
 
 //INICIO VENDAS
 
@@ -199,6 +200,8 @@ routes.get('/atendimento-whatsapp-qtd', AtendimentoController.getAtendimentoWhat
 routes.get('/atendimento-facebook-mes', AtendimentoController.getAtendimentoFacebookMes);
 routes.get('/atendimento-facebook-qtd', AtendimentoController.getAtendimentoFacebookQtde);
 routes.get('/atendimento-facebook', AtendimentoController.getAtendimentoFacebook);
+routes.get('/atendimento-geral', AtendimentoController.getResumoAtendimentos);
+routes.get('/atendimento-soma-geral', AtendimentoController.somaGeral);
 //FIM SUPORTE
 
 //FROTAS
@@ -216,17 +219,19 @@ routes.put('/frota/carros/:id', CarrosController.updateCarros);
 routes.delete('/frota/carros/:id', CarrosController.deleteCarro);
 
 //RELATORIOS
-routes.get('/km-rodados', MetragemController.getQuilometrosRodados);
-routes.get('/litros-gastos', MetragemController.getCombustivelGasto);
-routes.get('/custo-mensal', MetragemController.custoTotalMes);
+routes.get('/km-rodados/:mes', MetragemController.getQuilometrosRodados);
+routes.get('/litros-gastos/:mes', MetragemController.getCombustivelGasto);
+routes.get('/custo-mensal/:mes', MetragemController.custoTotalMes);
 routes.get('/combustivel-mes/:id', MetragemController.combustivelMes);
 routes.get('/combustivel-mes-qtd/:id', MetragemController.combustivelMesQtd);
 routes.get('/km-mes/:id', MetragemController.kmMes);
 routes.get('/km-mes-qtd/:id', MetragemController.kmMesQtd);
-routes.get('/media-custo-km', MetragemController.mediaCustoPorKm);
-routes.get('/km-por-litro', MetragemController.mediaKmPorLitro);
+routes.get('/media-custo-km/:mes', MetragemController.mediaCustoPorKm);
+routes.get('/km-por-litro/:mes', MetragemController.mediaKmPorLitro);
 routes.get('/metragem/:id', MetragemController.getMetragemId);
 routes.get('/consumo-geral-mes', MetragemController.consumoGeralPorMes);
 routes.get('/consumo-geral-km', MetragemController.consumoGeralPorMesKm);
+
+routes.post('/teste-email', EmailController.index);
 
 module.exports = routes;

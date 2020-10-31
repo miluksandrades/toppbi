@@ -13,42 +13,51 @@ module.exports = {
         return res.status(200).json(qtd);
     },
 
-    async getAtendimentoDia(req, res){
-        const {dtinicio, dtfim} = req.params;
+    async getAtendimentoDia(req, res) {
+        const {
+            dtinicio,
+            dtfim
+        } = req.params;
 
         const atendimento = await knex.column(knex.raw("to_char(dtatendimento, 'DD-mm') as dia"))
-        .sum('qtde')
-        .from('atendimento')
-        .where('dtatendimento', '>=', dtinicio)
-        .andWhere('dtatendimento', '<=', dtfim)
-        .groupBy('dtatendimento')
-        .orderBy('dtatendimento')
+            .sum('qtde')
+            .from('atendimento')
+            .where('dtatendimento', '>=', dtinicio)
+            .andWhere('dtatendimento', '<=', dtfim)
+            .groupBy('dtatendimento')
+            .orderBy('dtatendimento')
 
         var dia = []
-        atendimento.forEach(e =>{
+        atendimento.forEach(e => {
             dia.push(e['dia'])
         })
 
         return res.status(200).json(dia)
     },
 
-    async getAtendimentoQtd(req, res){
-        const {dtinicio, dtfim} = req.params;
+    async getAtendimentoQtd(req, res) {
+        const {
+            dtinicio,
+            dtfim
+        } = req.params;
 
         const atendimento = await knex.column(knex.raw("to_char(dtatendimento, 'DD-mm') as dia"))
-        .sum('qtde')
-        .from('atendimento')
-        .where('dtatendimento', '>=', dtinicio)
-        .andWhere('dtatendimento', '<=', dtfim)
-        .groupBy('dtatendimento')
-        .orderBy('dtatendimento')
+            .sum('qtde')
+            .from('atendimento')
+            .where('dtatendimento', '>=', dtinicio)
+            .andWhere('dtatendimento', '<=', dtfim)
+            .groupBy('dtatendimento')
+            .orderBy('dtatendimento')
 
         var qtd = []
-        atendimento.forEach(e =>{
+        atendimento.forEach(e => {
             qtd.push(e['sum'])
         })
 
-        return res.status(200).json([{data: qtd, label: ''}])
+        return res.status(200).json([{
+            data: qtd,
+            label: ''
+        }])
     },
 
     async getAtendimentoWhatsapp(req, res) {
@@ -194,49 +203,71 @@ module.exports = {
         }]);
     },
 
-    async getAtendimentosPorAgente(req, res){
+    async getAtendimentosPorAgente(req, res) {
         const atendimento = await knex.select('agente.atendente')
-        .column(knex.raw('(SUM(qtde)*100) / (SELECT SUM(qtde) FROM atendimento WHERE fkagente <> 10) as porcentagem'))
-        .from('atendimento')
-        .leftJoin('agente', 'fkagente', 'agente.id')
-        .where('fkagente', '<>', 10)
-        .groupBy('agente.atendente')
-        .orderBy('agente.atendente')
+            .column(knex.raw('(SUM(qtde)*100) / (SELECT SUM(qtde) FROM atendimento WHERE fkagente <> 10) as porcentagem'))
+            .from('atendimento')
+            .leftJoin('agente', 'fkagente', 'agente.id')
+            .where('fkagente', '<>', 10)
+            .groupBy('agente.atendente')
+            .orderBy('agente.atendente')
 
         var agente = []
-        atendimento.forEach(e =>{
+        atendimento.forEach(e => {
             agente.push(e['atendente'])
         })
 
         return res.status(200).json(agente);
     },
 
-    async getAtendimentosPorAgenteQtd(req, res){
+    async getAtendimentosPorAgenteQtd(req, res) {
         const atendimento = await knex.column('agente.atendente')
-        .column(knex.raw('(SUM(qtde)*100) / (SELECT SUM(qtde) FROM atendimento WHERE fkagente <> 10) as porcentagem'))
-        .from('atendimento')
-        .leftJoin('agente', 'fkagente', 'agente.id')
-        .where('fkagente', '<>', 10)
-        .groupBy('agente.atendente')
-        .orderBy('agente.atendente')
+            .column(knex.raw('(SUM(qtde)*100) / (SELECT SUM(qtde) FROM atendimento WHERE fkagente <> 10) as porcentagem'))
+            .from('atendimento')
+            .leftJoin('agente', 'fkagente', 'agente.id')
+            .where('fkagente', '<>', 10)
+            .groupBy('agente.atendente')
+            .orderBy('agente.atendente')
 
         var qtde = []
-        atendimento.forEach(e =>{
+        atendimento.forEach(e => {
             qtde.push(e['porcentagem'])
         })
 
         return res.status(200).json(qtde);
     },
 
-    async getAtendimentosPorAgenteTabela(req, res){
+    async getAtendimentosPorAgenteTabela(req, res) {
         const atendimento = await knex.column('agente.atendente')
-        .sum('qtde')
-        .from('atendimento')
-        .leftJoin('agente', 'fkagente', 'agente.id')
-        .where('fkagente', '<>', 10)
-        .groupBy('agente.atendente')
-        .orderBy('sum', 'desc')
+            .sum('qtde')
+            .from('atendimento')
+            .leftJoin('agente', 'fkagente', 'agente.id')
+            .where('fkagente', '<>', 10)
+            .groupBy('agente.atendente')
+            .orderBy('sum', 'desc')
 
         return res.status(200).json(atendimento)
+    },
+
+    async getResumoAtendimentos(req, res) {
+        const atendimento = await knex.column(knex.raw("CASE WHEN canal = 1 THEN 'WHATSAPP'" +
+                "WHEN canal = 2 THEN 'FACEBOOK'" +
+                "ELSE 'O' END as canal"))
+            .sum('qtde')
+            .from('atendimento')
+            .groupBy('canal')
+            .orderBy('canal', 'asc')
+
+        return res.status(200).json(atendimento)
+    },
+
+    async somaGeral(req, res) {
+        const soma = await knex('atendimento').sum('qtde');
+        var qtd = [];
+        soma.forEach(e =>{
+            qtd.push(e['sum'])
+        })
+
+        return res.status(200).json(qtd)
     }
 }

@@ -6,8 +6,9 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class FrotasService {
-
+  
   url_frota = environment.BASE_URL + 'frota/'
+  base_url = environment.BASE_URL;
 
   constructor(private http: HttpClient) { }
 
@@ -40,18 +41,18 @@ export class FrotasService {
   }
 
   getCombustivelMes(id){
-    return this.http.get(`${environment.BASE_URL}combustivel-mes/${id}`);
+    return this.http.get(`${this.base_url}combustivel-mes/${id}`);
   }
 
   getCombustivelMesQtd(id){
-    return this.http.get(`${environment.BASE_URL}combustivel-mes-qtd/${id}`);
+    return this.http.get(`${this.base_url}combustivel-mes-qtd/${id}`);
   }
 
   getKmMes(id){
-    return this.http.get(`${environment.BASE_URL}km-mes/${id}`);
+    return this.http.get(`${this.base_url}km-mes/${id}`);
   }
   getKmMesQtd(id){
-    return this.http.get(`${environment.BASE_URL}km-mes-qtd/${id}`);
+    return this.http.get(`${this.base_url}km-mes-qtd/${id}`);
   }
 
   alterCarro(data, id){
@@ -71,35 +72,35 @@ export class FrotasService {
   }
 
   //RELATORIOS
-  getQuilometrosRodados(){
-    return this.http.get(environment.BASE_URL + 'km-rodados');
+  getQuilometrosRodados(mes){
+    return this.http.get(`${this.base_url}km-rodados/${mes}`);
   }
 
-  getLitrosGastos(){
-    return this.http.get(environment.BASE_URL + 'litros-gastos');
+  getLitrosGastos(mes){
+    return this.http.get(`${this.base_url}litros-gastos/${mes}`);
   }
 
-  getCustoMensal(){
-    return this.http.get(environment.BASE_URL + 'custo-mensal');
+  getCustoMensal(mes){
+    return this.http.get(`${this.base_url}custo-mensal/${mes}`);
   }
 
-  mediaCustoPorKm(){
-    return this.http.get(environment.BASE_URL + 'media-custo-km');
+  mediaCustoPorKm(mes){
+    return this.http.get(`${this.base_url}media-custo-km/${mes}`);
   }
 
-  mediaKmPorLitro(){
-    return this.http.get(environment.BASE_URL + 'km-por-litro');
+  mediaKmPorLitro(mes){
+    return this.http.get(`${this.base_url}km-por-litro/${mes}`);
   }
 
   getMetragemId(id){
-    return this.http.get(`${environment.BASE_URL}metragem/${id}`);
+    return this.http.get(`${this.base_url}metragem/${id}`);
   }
 
   consumoGeralMes(){
-    return this.http.get(environment.BASE_URL + 'consumo-geral-mes')
+    return this.http.get(this.base_url + 'consumo-geral-mes')
   }
 
   consumoGeralKm(){
-    return this.http.get(environment.BASE_URL + 'consumo-geral-km')
+    return this.http.get(this.base_url + 'consumo-geral-km')
   }
 }

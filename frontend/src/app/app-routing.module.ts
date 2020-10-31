@@ -24,9 +24,11 @@ import { EquipeEditComponent } from './components/dashboard/equipe/equipe-edit/e
 import { CarrosDetailsComponent } from './components/dashboard/frota/carros-details/carros-details.component';
 import { RedesocialComponent } from './components/dashboard/suporte/redesocial/redesocial.component';
 import { ResumoGeralComponent } from './components/dashboard/resumo-geral/resumo-geral.component';
+import { StatusservicesComponent } from './statusservices/statusservices.component';
 
 const routes: Routes = [
   { path: '', component: ResumoGeralComponent},
+  { path: 'servicos', component: StatusservicesComponent},
   { path: 'dashboard', component: DashboardComponent, children: [
     { path: 'inicio', component: ResumoComponent},
     { path: 'planos', component: PlanosComponent},

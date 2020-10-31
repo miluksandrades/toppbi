@@ -11,6 +11,8 @@ import { RelatoriosService } from 'src/app/services/relatorios.service';
 })
 export class FrotaComponent implements OnInit {
 
+  mes = 10;
+
   public carros: any;
   public equipes: any;
   public municipios: any;
@@ -20,7 +22,7 @@ export class FrotaComponent implements OnInit {
   public customensal: any;
   public custoporkm: any;
   public kmporlitro: any;
-  
+
   pageOfItems: Array<any>;
 
   public carroForm = {
@@ -68,40 +70,20 @@ export class FrotaComponent implements OnInit {
       this.carros = data;
     })
 
-    this.api.getEquipe().subscribe(data =>{
+    this.api.getEquipe().subscribe(data => {
       this.equipes = data;
     })
 
-    this.relatorio.getMunicipio().subscribe(data =>{
+    this.relatorio.getMunicipio().subscribe(data => {
       this.municipios = data;
     })
 
-    this.api.getQuilometrosRodados().subscribe(data =>{
-      this.kmrodados = data;
-    })
-
-    this.api.getLitrosGastos().subscribe(data =>{
-      this.litrosgastos = data;
-    })
-
-    this.api.getCustoMensal().subscribe(data =>{
-      this.customensal = data;
-    })
-
-    this.api.mediaCustoPorKm().subscribe(data =>{
-      this.custoporkm = data;
-    })
-
-    this.api.mediaKmPorLitro().subscribe(data =>{
-      this.kmporlitro = data;
-    })
-
-    this.api.consumoGeralMes().subscribe(data =>{
+    this.api.consumoGeralMes().subscribe(data => {
       this.consumo = data;
       this.consumoLabels = this.consumo;
     })
 
-    this.api.consumoGeralKm().subscribe(data =>{
+    this.api.consumoGeralKm().subscribe(data => {
       this.consumokm = data;
       this.consumoData = this.consumokm;
     })
@@ -128,11 +110,56 @@ export class FrotaComponent implements OnInit {
     location.reload();
   }
 
+  getDados() {
+    var mes = this.mes;
+
+    this.api.getQuilometrosRodados(mes).subscribe(data => {
+      this.kmrodados = data;
+    })
+
+    this.api.getLitrosGastos(mes).subscribe(data => {
+      this.litrosgastos = data;
+    })
+
+    this.api.getCustoMensal(mes).subscribe(data => {
+      this.customensal = data;
+    })
+
+    this.api.mediaCustoPorKm(mes).subscribe(data => {
+      this.custoporkm = data;
+    })
+
+    this.api.mediaKmPorLitro(mes).subscribe(data => {
+      this.kmporlitro = data;
+    })
+  }
+
   onChangePage(pageOfItems: Array<any>) {
     this.pageOfItems = pageOfItems;
   }
 
   ngOnInit(): void {
+    var mes = 10;
+
+    this.api.getQuilometrosRodados(mes).subscribe(data => {
+      this.kmrodados = data;
+    })
+
+    this.api.getLitrosGastos(mes).subscribe(data => {
+      this.litrosgastos = data;
+    })
+
+    this.api.getCustoMensal(mes).subscribe(data => {
+      this.customensal = data;
+    })
+
+    this.api.mediaCustoPorKm(mes).subscribe(data => {
+      this.custoporkm = data;
+    })
+
+    this.api.mediaKmPorLitro(mes).subscribe(data => {
+      this.kmporlitro = data;
+    })
   }
 
 }

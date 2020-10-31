@@ -15,6 +15,7 @@ import { TorresService } from './services/torres.service';
 import { SuporteService } from './services/suporte.service';
 import { FrotasService } from './services/frotas.service';
 import { AtendimentoService } from './services/atendimento.service';
+import { EmailService } from './services/email.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { DashboardRoutingModule } from './components/dashboard/dashboard-routing.module';;
@@ -49,6 +50,7 @@ import { EquipeEditComponent } from './components/dashboard/equipe/equipe-edit/e
 import { CarrosDetailsComponent } from './components/dashboard/frota/carros-details/carros-details.component';
 import { RedesocialComponent } from './components/dashboard/suporte/redesocial/redesocial.component';
 import { ResumoGeralComponent } from './components/dashboard/resumo-geral/resumo-geral.component';
+import { StatusservicesComponent } from './statusservices/statusservices.component';
 
 
 @NgModule({
@@ -78,6 +80,7 @@ import { ResumoGeralComponent } from './components/dashboard/resumo-geral/resumo
     CarrosDetailsComponent,
     RedesocialComponent,
     ResumoGeralComponent,
+    StatusservicesComponent,
     
   ],
   imports: [
@@ -103,7 +106,8 @@ import { ResumoGeralComponent } from './components/dashboard/resumo-geral/resumo
     TorresService,
     SuporteService,
     FrotasService,
-    AtendimentoService
+    AtendimentoService,
+    EmailService
   ],
   bootstrap: [AppComponent]
 })
