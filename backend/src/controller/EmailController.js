@@ -124,8 +124,8 @@ module.exports = {
             port: 587,
             secure: false, //SSL/TLS
             auth: {
-                user: 'lucasnoctoppnet@gmail.com',
-                pass: 'Adm@7200'
+                user: '*****',
+                pass: '*********'
             }
         });
 
