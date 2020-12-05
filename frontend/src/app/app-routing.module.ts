@@ -25,6 +25,8 @@ import { CarrosDetailsComponent } from './components/dashboard/frota/carros-deta
 import { RedesocialComponent } from './components/dashboard/suporte/redesocial/redesocial.component';
 import { ResumoGeralComponent } from './components/dashboard/resumo-geral/resumo-geral.component';
 import { StatusservicesComponent } from './statusservices/statusservices.component';
+import { TelefoniaComponent } from './components/dashboard/suporte/telefonia/telefonia.component';
+import { SmartmapsComponent } from './components/dashboard/noc/smartmaps/smartmaps.component';
 
 const routes: Routes = [
   { path: '', component: ResumoGeralComponent},
@@ -49,6 +51,8 @@ const routes: Routes = [
     { path: 'equipamento/edit/:id', component: EquipamentosEditComponent },
     { path: 'sac', component: SuporteComponent },
     { path: 'redesocial', component: RedesocialComponent },
+    { path: '3cx', component: TelefoniaComponent},
+    { path: 'smartmaps', component: SmartmapsComponent},
     { path: 'suporte-tecnico', component: SuporteTecnicoComponent },
   ]}
 ];

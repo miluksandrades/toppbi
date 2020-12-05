@@ -11,7 +11,9 @@ import { RelatoriosService } from 'src/app/services/relatorios.service';
 })
 export class FrotaComponent implements OnInit {
 
-  mes = 10;
+  public date = new Date();
+
+  mes = (this.date.getMonth() + 1);
 
   public carros: any;
   public equipes: any;
@@ -139,7 +141,7 @@ export class FrotaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var mes = 10;
+    var mes = (this.date.getMonth() + 1);
 
     this.api.getQuilometrosRodados(mes).subscribe(data => {
       this.kmrodados = data;

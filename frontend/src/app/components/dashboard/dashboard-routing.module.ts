@@ -22,6 +22,8 @@ import { EquipeEditComponent } from './equipe/equipe-edit/equipe-edit.component'
 import { CarrosDetailsComponent } from './frota/carros-details/carros-details.component';
 import { RedesocialComponent } from './suporte/redesocial/redesocial.component';
 import { ResumoGeralComponent } from './resumo-geral/resumo-geral.component';
+import { TelefoniaComponent } from './suporte/telefonia/telefonia.component';
+import { SmartmapsComponent } from './noc/smartmaps/smartmaps.component';
 
 const routes: Routes = [
     { path: 'inicio', component: ResumoComponent },
@@ -43,6 +45,8 @@ const routes: Routes = [
     { path: 'equipamento/edit/:id', component: EquipamentosEditComponent },
     { path: 'sac', component: SuporteComponent },
     { path: 'redesocial', component: RedesocialComponent },
+    { path: '3cx', component: TelefoniaComponent},
+    { path: 'smartmaps', component: SmartmapsComponent},
     { path: 'suporte-tecnico', component: SuporteTecnicoComponent },
     { path: '404', component: NotFoundComponent },
     { path: '**', redirectTo: '/404' },

@@ -51,6 +51,8 @@ import { CarrosDetailsComponent } from './components/dashboard/frota/carros-deta
 import { RedesocialComponent } from './components/dashboard/suporte/redesocial/redesocial.component';
 import { ResumoGeralComponent } from './components/dashboard/resumo-geral/resumo-geral.component';
 import { StatusservicesComponent } from './statusservices/statusservices.component';
+import { TelefoniaComponent } from './components/dashboard/suporte/telefonia/telefonia.component';
+import { SmartmapsComponent } from './components/dashboard/noc/smartmaps/smartmaps.component';
 
 
 @NgModule({
@@ -81,6 +83,8 @@ import { StatusservicesComponent } from './statusservices/statusservices.compone
     RedesocialComponent,
     ResumoGeralComponent,
     StatusservicesComponent,
+    TelefoniaComponent,
+    SmartmapsComponent,
     
   ],
   imports: [

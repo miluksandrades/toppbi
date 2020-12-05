@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://10.200.2.136:3333/',
+  BASE_URL: 'http://10.200.2.175:3333/',
   colors: ["#0d5ac1", "#1c0365", "#4ca2f9", "#6119d0", "#651be6", 
   "#566ca0", "#2f1179", "#513d98", "#4b5bdc", "#250662"]
 };
