@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class RelatoriosService {
 
-  public url = environment.BASE_URL
+  public url = 'http://10.200.2.136:3333/'
 
   constructor(private http: HttpClient) { }
 

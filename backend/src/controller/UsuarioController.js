@@ -7,5 +7,7 @@ module.exports = {
         const resultado = await knex('usuarios');
 
         return res.json(resultado);
-    }
+    },
+
+    
 }

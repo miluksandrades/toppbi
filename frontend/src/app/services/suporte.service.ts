@@ -7,11 +7,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SuporteService {
 
-  public url_canc = environment.BASE_URL + 'cancelamento'
-  public url_ret = environment.BASE_URL + 'retencao'
-  public url_mig = environment.BASE_URL + 'migracao'
-  public url_mudend = environment.BASE_URL + 'mudendereco'
-  public url_mudplan = environment.BASE_URL + 'mudplano'
+  public url_canc = 'http://10.200.2.136:3333/' + 'cancelamento'
+  public url_ret = 'http://10.200.2.136:3333/' + 'retencao'
+  public url_mig = 'http://10.200.2.136:3333/' + 'migracao'
+  public url_mudend = 'http://10.200.2.136:3333/' + 'mudendereco'
+  public url_mudplan = 'http://10.200.2.136:3333/' + 'mudplano'
 
   constructor(private http: HttpClient) { }
 

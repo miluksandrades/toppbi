@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class VendedoresService {
 
-  public url = environment.BASE_URL + 'vendedor';
+  public url = 'http://10.200.2.136:3333/' + 'vendedor';
 
   constructor(private http: HttpClient) { }
 

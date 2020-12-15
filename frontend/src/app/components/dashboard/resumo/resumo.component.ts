@@ -3,7 +3,6 @@ import { RelatoriosService } from 'src/app/services/relatorios.service';
 
 import { ChartType, ChartOptions, ChartDataSets } from 'chart.js';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
-import {environment} from '../../../../environments/environment'
 
 import { Label } from 'ng2-charts';
 import { VendedoresService } from 'src/app/services/vendedores.service';
@@ -21,7 +20,10 @@ export class ResumoComponent implements OnInit {
   public somaDia: any;
   public planovendido: any;
   public vendedor: any;
-  public color = environment.colors
+  public color = ["#0d5ac1", "#1c0365", "#4ca2f9", "#6119d0", "#651be6",
+  "#566ca0", "#2f1179", "#513d98", "#4b5bdc", "#250662", "#2980b9",
+  "#3498db", "#17c0eb", "#4b4b4b", "#3d3d3d", "#67e6dc", "#2c2c54",
+  "#40407a", "#706fd3"]
 
   //----------------------------------------------------
   public labels: any;

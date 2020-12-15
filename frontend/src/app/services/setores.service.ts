@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SetoresService {
 
-  public url = environment.BASE_URL + 'setor';
+  public url = 'http://10.200.2.136:3333/' + 'setor';
 
   constructor(private http: HttpClient) { }
 

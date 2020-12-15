@@ -47,7 +47,10 @@ export class NocComponent implements OnInit {
   public bravaLegend = true;
   public bravaColors = [
     {
-      backgroundColor: environment.colors,
+      backgroundColor: ["#0d5ac1", "#1c0365", "#4ca2f9", "#6119d0", "#651be6",
+      "#566ca0", "#2f1179", "#513d98", "#4b5bdc", "#250662", "#2980b9",
+      "#3498db", "#17c0eb", "#4b4b4b", "#3d3d3d", "#67e6dc", "#2c2c54",
+      "#40407a", "#706fd3"],
     },
   ];
 
@@ -71,7 +74,10 @@ export class NocComponent implements OnInit {
   public juntoLegend = true;
   public juntoColors = [
     {
-      backgroundColor: environment.colors
+      backgroundColor: ["#0d5ac1", "#1c0365", "#4ca2f9", "#6119d0", "#651be6",
+    "#566ca0", "#2f1179", "#513d98", "#4b5bdc", "#250662", "#2980b9",
+    "#3498db", "#17c0eb", "#4b4b4b", "#3d3d3d", "#67e6dc", "#2c2c54",
+    "#40407a", "#706fd3"]
     },
   ];
 
@@ -95,7 +101,10 @@ export class NocComponent implements OnInit {
   public vivoLegend = true;
   public vivoColors = [
     {
-      backgroundColor: environment.colors
+      backgroundColor: ["#0d5ac1", "#1c0365", "#4ca2f9", "#6119d0", "#651be6",
+      "#566ca0", "#2f1179", "#513d98", "#4b5bdc", "#250662", "#2980b9",
+      "#3498db", "#17c0eb", "#4b4b4b", "#3d3d3d", "#67e6dc", "#2c2c54",
+      "#40407a", "#706fd3"]
     },
   ];
   public sea: any;
@@ -118,7 +127,10 @@ export class NocComponent implements OnInit {
   public seaLegend = true;
   public seaColors = [
     {
-      backgroundColor: environment.colors
+      backgroundColor: ["#0d5ac1", "#1c0365", "#4ca2f9", "#6119d0", "#651be6",
+    "#566ca0", "#2f1179", "#513d98", "#4b5bdc", "#250662", "#2980b9",
+    "#3498db", "#17c0eb", "#4b4b4b", "#3d3d3d", "#67e6dc", "#2c2c54",
+    "#40407a", "#706fd3"]
     },
   ];
 
@@ -143,7 +155,10 @@ export class NocComponent implements OnInit {
   public operadoraDataLabel = [pluginDataLabels]
   public operadoraColors = [
     {
-      backgroundColor: environment.colors,
+      backgroundColor: ["#0d5ac1", "#1c0365", "#4ca2f9", "#6119d0", "#651be6",
+    "#566ca0", "#2f1179", "#513d98", "#4b5bdc", "#250662", "#2980b9",
+    "#3498db", "#17c0eb", "#4b4b4b", "#3d3d3d", "#67e6dc", "#2c2c54",
+    "#40407a", "#706fd3"],
     },
   ];
 

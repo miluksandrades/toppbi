@@ -2,22 +2,26 @@ const knex = require("../connection")
 
 module.exports = {
     async mediaCustoPorKm(req, res) {
-        const {mes} = req.params;
+        const {
+            mes
+        } = req.params;
 
         const resultado = await knex.column(knex.raw('COALESCE(CAST(AVG(custoporkm) AS FLOAT), 0) as avg'))
             .from('metragem')
-            .where(knex.raw('Extract(month from mesreferente) = '+mes))
+            .where(knex.raw('Extract(month from mesreferente) = ' + mes))
             .andWhere(knex.raw('Extract(year from mesreferente) = Extract(year from Now())'))
 
         return res.status(200).json(resultado)
     },
 
     async mediaKmPorLitro(req, res) {
-        const {mes} = req.params;
+        const {
+            mes
+        } = req.params;
 
         const resultado = await knex.column(knex.raw('COALESCE(CAST(AVG(kmporlitro) AS FLOAT), 0) as avg'))
             .from('metragem')
-            .where(knex.raw('Extract(month from mesreferente) = '+mes))
+            .where(knex.raw('Extract(month from mesreferente) = ' + mes))
             .andWhere(knex.raw('Extract(year from mesreferente) = Extract(year from Now())'))
 
         return res.status(200).json(resultado)
@@ -42,21 +46,25 @@ module.exports = {
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 11 THEN 'Novembro'" +
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 12 THEN 'Dezembro'" +
                 "ELSE 'o' END as mes"))
-            .column('kmrodados')
-            .column('totallitros')
-            .column('custoporkm')
-            .column('kmporlitro')
+            .sum('kmrodados as kmrodados')
+            .sum('totallitros as totallitros')
+            .sum('custoporkm as custoporkm')
+            .sum('kmporlitro as kmporlitro')
             .where('fkcarro', '=', id)
+            .groupBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
+            .orderBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
 
         return res.status(200).json(resultado)
     },
 
     async getQuilometrosRodados(req, res) {
-        const {mes} = req.params;
+        const {
+            mes
+        } = req.params;
 
         const quilometros = await knex('metragem')
             .column(knex.raw('COALESCE(SUM(kmrodados), 0)'))
-            .where(knex.raw('Extract(month from mesreferente) = '+mes))
+            .where(knex.raw('Extract(month from mesreferente) = ' + mes))
             .andWhere(knex.raw('Extract(year from mesreferente) = Extract(year from Now())'))
         var qtd = []
         quilometros.forEach(e => {
@@ -67,11 +75,13 @@ module.exports = {
     },
 
     async getCombustivelGasto(req, res) {
-        const {mes} = req.params;
+        const {
+            mes
+        } = req.params;
 
         const comb = await knex('metragem')
             .column(knex.raw('COALESCE(SUM(totallitros), 0)'))
-            .where(knex.raw('Extract(month from mesreferente) = '+mes))
+            .where(knex.raw('Extract(month from mesreferente) = ' + mes))
             .andWhere(knex.raw('Extract(year from mesreferente) = Extract(year from Now())'))
         var qtd = []
         comb.forEach(e => {
@@ -82,11 +92,13 @@ module.exports = {
     },
 
     async custoTotalMes(req, res) {
-        const {mes} = req.params;
-        
+        const {
+            mes
+        } = req.params;
+
         const data = await knex.column(knex.raw('COALESCE(SUM(custos), 0)'))
             .from('metragem')
-            .where(knex.raw('Extract(month from mesreferente) = '+mes))
+            .where(knex.raw('Extract(month from mesreferente) = ' + mes))
             .andWhere(knex.raw('Extract(year from mesreferente) = Extract(year from Now())'))
 
         var qtd = []
@@ -115,9 +127,11 @@ module.exports = {
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 11 THEN 'Novembro'" +
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 12 THEN 'Dezembro'" +
                 "ELSE 'o' END as mes"))
-            .column('totallitros as litros')
+            .sum('totallitros as litros')
             .from('metragem')
             .where('fkcarro', '=', id)
+            .groupBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
+            .orderBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
 
         var label = []
         resultado.forEach(e => {
@@ -145,9 +159,11 @@ module.exports = {
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 11 THEN 'Novembro'" +
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 12 THEN 'Dezembro'" +
                 "ELSE 'o' END as mes"))
-            .column('totallitros as litros')
+            .sum('totallitros as litros')
             .from('metragem')
             .where('fkcarro', '=', id)
+            .groupBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
+            .orderBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
 
         var qtd = []
         resultado.forEach(e => {
@@ -178,9 +194,11 @@ module.exports = {
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 11 THEN 'Novembro'" +
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 12 THEN 'Dezembro'" +
                 "ELSE 'o' END as mes"))
-            .column('kmrodados')
+            .sum('kmrodados')
             .from('metragem')
             .where('fkcarro', '=', id)
+            .groupBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
+            .orderBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
 
         var label = []
         resultado.forEach(e => {
@@ -208,13 +226,15 @@ module.exports = {
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 11 THEN 'Novembro'" +
                 "WHEN EXTRACT(MONTH FROM mesreferente) = 12 THEN 'Dezembro'" +
                 "ELSE 'o' END as mes"))
-            .column('kmrodados')
+            .sum('kmrodados')
             .from('metragem')
             .where('fkcarro', '=', id)
+            .groupBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
+            .orderBy(knex.raw('EXTRACT(MONTH FROM mesreferente)'))
 
         var qtd = []
         resultado.forEach(e => {
-            qtd.push(e['kmrodados'])
+            qtd.push(e['sum'])
         })
 
         return res.json([{

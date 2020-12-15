@@ -7,8 +7,8 @@ import { environment } from 'src/environments/environment';
 })
 export class FrotasService {
   
-  url_frota = environment.BASE_URL + 'frota/'
-  base_url = environment.BASE_URL;
+  url_frota = 'http://10.200.2.136:3333/' + 'frota/'
+  base_url = 'http://10.200.2.136:3333/';
 
   constructor(private http: HttpClient) { }
 

@@ -41,18 +41,18 @@ module.exports = {
 
         var mes = [];
 
-        const vendas = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtvenda) = 1 THEN 'Jan'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 2 THEN 'Fev'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 3 THEN 'Mar'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 4 THEN 'Abr'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 5 THEN 'Mai'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 6 THEN 'Jun'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 7 THEN 'Jul'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 8 THEN 'Ago'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 9 THEN 'Sep'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 10 THEN 'Oct'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 11 THEN 'Nov'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 12 THEN 'Dez'" +
+        const vendas = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtvenda) = 1 THEN 'Janeiro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 2 THEN 'Fevereiro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 3 THEN 'Março'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 4 THEN 'Abril'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 5 THEN 'Maio'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 6 THEN 'Junho'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 7 THEN 'Julho'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 8 THEN 'Agosto'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 9 THEN 'Setembro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 10 THEN 'Outubro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 11 THEN 'Novembro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 12 THEN 'Dezembro'" +
                 "ELSE 'o' END as mes"))
             .sum('valor as valor')
             .from('registro_vendas')
@@ -74,18 +74,18 @@ module.exports = {
 
         var valor = [];
 
-        const vendas = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtvenda) = 1 THEN 'Jan'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 2 THEN 'Fev'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 3 THEN 'Mar'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 4 THEN 'Abr'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 5 THEN 'Mai'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 6 THEN 'Jun'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 7 THEN 'Jul'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 8 THEN 'Ago'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 9 THEN 'Sep'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 10 THEN 'Oct'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 11 THEN 'Nov'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 12 THEN 'Dez'" +
+        const vendas = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtvenda) = 1 THEN 'Janeiro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 2 THEN 'Fevereiro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 3 THEN 'Março'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 4 THEN 'Abril'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 5 THEN 'Maio'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 6 THEN 'Junho'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 7 THEN 'Julho'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 8 THEN 'Agosto'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 9 THEN 'Setembro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 10 THEN 'Outubro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 11 THEN 'Novembro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 12 THEN 'Dezembro'" +
                 "ELSE 'o' END as mes"))
             .sum('valor as valor')
             .from('registro_vendas')
@@ -250,18 +250,18 @@ module.exports = {
 
         var mes = [];
 
-        const result = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtvenda) = 1 THEN 'Jan'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 2 THEN 'Fev'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 3 THEN 'Mar'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 4 THEN 'Abr'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 5 THEN 'Mai'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 6 THEN 'Jun'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 7 THEN 'Jul'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 8 THEN 'Ago'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 9 THEN 'Sep'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 10 THEN 'Oct'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 11 THEN 'Nov'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 12 THEN 'Dez'" +
+        const result = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtvenda) = 1 THEN 'Janeiro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 2 THEN 'Fevereiro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 3 THEN 'Março'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 4 THEN 'Abril'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 5 THEN 'Maio'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 6 THEN 'Junho'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 7 THEN 'Julho'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 8 THEN 'Agosto'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 9 THEN 'Setembro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 10 THEN 'Outubro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 11 THEN 'Novembro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 12 THEN 'Dezembro'" +
                 "ELSE 'o' END as mes"))
             .sum('valor as valor')
             .from('registro_vendas')
@@ -285,18 +285,18 @@ module.exports = {
 
         var valor = [];
 
-        const result = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtvenda) = 1 THEN 'Jan'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 2 THEN 'Fev'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 3 THEN 'Mar'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 4 THEN 'Abr'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 5 THEN 'Mai'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 6 THEN 'Jun'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 7 THEN 'Jul'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 8 THEN 'Ago'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 9 THEN 'Sep'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 10 THEN 'Oct'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 11 THEN 'Nov'" +
-                "WHEN EXTRACT(MONTH FROM dtvenda) = 12 THEN 'Dez'" +
+        const result = await knex.column(knex.raw("CASE WHEN EXTRACT(MONTH FROM dtvenda) = 1 THEN 'Janeiro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 2 THEN 'Fevereiro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 3 THEN 'Março'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 4 THEN 'Abril'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 5 THEN 'Maio'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 6 THEN 'Junho'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 7 THEN 'Julho'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 8 THEN 'Agosto'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 9 THEN 'Setembro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 10 THEN 'Outubro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 11 THEN 'Novembro'" +
+                "WHEN EXTRACT(MONTH FROM dtvenda) = 12 THEN 'Dezembro'" +
                 "ELSE 'o' END as mes"))
             .sum('valor as valor')
             .from('registro_vendas')

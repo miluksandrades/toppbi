@@ -1,5 +1,79 @@
 <div class="container-fluid">
   <div class="row">
+    <div class="col-xl-4 mb-3">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-dark">
+            Atendimentos setembro - Resumo
+          </h6>
+        </div>
+        <div class="card-body">
+          <canvas class="mb-3" baseChart [data]="setembroData" [labels]="setembroLabels"
+            [chartType]="setembroType" [options]="setembroOptions" [colors]="setembroColors" [legend]="setembroLegend">
+          </canvas>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              % de Atendidos
+              <span class="badge badge-success badge-pill">64.3%</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              % de não atendidos
+              <span class="badge badge-danger badge-pill">32.7%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 mb-3">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-dark">
+            Atendimentos outubro - Resumo
+          </h6>
+        </div>
+        <div class="card-body">
+          <canvas class="mb-3" baseChart [data]="outubroData" [labels]="outubroLabels"
+            [chartType]="outubroType" [options]="outubroOptions" [colors]="outubroColors" [legend]="outubroLegend">
+          </canvas>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              % de Atendidos
+              <span class="badge badge-success badge-pill">27.5%</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              % de não atendidos
+              <span class="badge badge-danger badge-pill">72.5%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4 mb-3">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-dark">
+            Atendimentos novembro - Resumo
+          </h6>
+        </div>
+        <div class="card-body">
+          <canvas class="mb-3" baseChart [data]="novembroData" [labels]="novembroLabels"
+            [chartType]="novembroType" [options]="novembroOptions" [colors]="novembroColors" [legend]="novembroLegend">
+          </canvas>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              % de Atendidos
+              <span class="badge badge-success badge-pill">82.3%</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              % de não atendidos
+              <span class="badge badge-danger badge-pill">17.7%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-xl-12 mb-3">
       <div class="card">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -8,9 +82,9 @@
           </h6>
         </div>
         <div class="card-body">
-            <a href="assets/meses.jpeg" target="_blank">
-                <img src="assets/meses.jpeg" alt="" class="img-fluid">
-              </a>
+          <a href="assets/meses.jpeg" target="_blank">
+            <img src="assets/meses.jpeg" alt="" class="img-fluid">
+          </a>
         </div>
       </div>
     </div>

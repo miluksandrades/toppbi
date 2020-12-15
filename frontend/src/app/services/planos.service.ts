@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PlanosService {
 
-  public planos_url = environment.BASE_URL + 'planos';
+  public planos_url = 'http://10.200.2.136:3333/' + 'planos';
 
   constructor(private http: HttpClient) {}
 

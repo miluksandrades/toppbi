@@ -6,10 +6,10 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TorresService {
-  public url = environment.BASE_URL + 'torres'
-  public radios = environment.BASE_URL + 'radios'
-  public equipamentos = environment.BASE_URL + 'equipamentos';
-  public resumo = environment.BASE_URL + 'resumo';
+  public url = 'http://10.200.2.136:3333/' + 'torres'
+  public radios = 'http://10.200.2.136:3333/' + 'radios'
+  public equipamentos = 'http://10.200.2.136:3333/' + 'equipamentos';
+  public resumo = 'http://10.200.2.136:3333/' + 'resumo';
 
   constructor(private http: HttpClient) { }
 
@@ -31,10 +31,10 @@ export class TorresService {
     return this.http.get(this.url + '-med');
   }
 
-  getConexaoAtm(){return this.http.get(environment.BASE_URL + 'total-conexoes-atm')}
-  getConexaoBn(){return this.http.get(environment.BASE_URL + 'total-conexoes-bn')}
-  getConexaoMed(){return this.http.get(environment.BASE_URL + 'total-conexoes-med')}
-  getNumConexoes(id){return this.http.get(`${environment.BASE_URL}torres/conexoes/${id}`)}
+  getConexaoAtm(){return this.http.get('http://10.200.2.136:3333/' + 'total-conexoes-atm')}
+  getConexaoBn(){return this.http.get('http://10.200.2.136:3333/' + 'total-conexoes-bn')}
+  getConexaoMed(){return this.http.get('http://10.200.2.136:3333/' + 'total-conexoes-med')}
+  getNumConexoes(id){return this.http.get(`${'http://10.200.2.136:3333/'}torres/conexoes/${id}`)}
 
   getResumoRadios() {
     return this.http.get(this.resumo + '-radios')

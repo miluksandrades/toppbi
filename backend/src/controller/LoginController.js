@@ -17,5 +17,15 @@ module.exports = {
         }
 
         return res.status(200).json(login);
+    },
+
+    async login(req, res){
+        const {username, password} = req.body;
+
+        if(username === 'admin' && password === 'admin'){
+            return res.status(200).send('OK');
+        } else{
+            return res.status(400).send('ERROR');
+        }
     }
 }

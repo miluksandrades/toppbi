@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
 })
 export class DadosService {
 
-  public url = environment.BASE_URL
+  public url = 'http://10.200.2.136:3333/'
 
   constructor(private http: HttpClient) { }
 

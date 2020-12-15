@@ -38,6 +38,10 @@ const MetragemController = require('./controller/MetragemController');
 const AtendimentoController = require('./controller/AtendimentoController');
 const EmailController = require('./controller/EmailController');
 
+const LoginController = require('./controller/LoginController');
+
+routes.post('/login', LoginController.login);
+
 //INICIO VENDAS
 
 //CRUD PLANO
