@@ -10,7 +10,10 @@ module.exports = {
     async getFiveTask(req, res) {
         const ocorrencia = await knex.select('operadora.descricao')
             .column('tiporegistro.descricao as problema')
-            .column('dtinicio')
+            .column(knex.raw('EXTRACT(day from dtinicio) as day' ))
+            .column(knex.raw('EXTRACT(month from dtinicio) as month'))
+            .column(knex.raw('EXTRACT(hour from dtinicio) as hora' ))
+            .column(knex.raw('EXTRACT(minutes from dtinicio) as min'))
             .from('ocorrencia')
             .leftJoin('operadora', 'fkoperadora', 'operadora.id')
             .leftJoin('tiporegistro', 'fktiporeg', 'tiporegistro.id')

@@ -182,12 +182,12 @@ export class NocComponent implements OnInit {
   public ocbravaData: ChartDataSets[] = [{ data: [] }];
   public ocbravaColors: Array<any> = [
     { // first color
-      backgroundColor: '#1e3799',
-      borderColor: '#1e3799',
-      pointBackgroundColor: '#1e3799',
+      backgroundColor: '#44bd32',
+      borderColor: '#44bd32',
+      pointBackgroundColor: '#44bd32',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: '#1e3799'
+      pointHoverBorderColor: '#44bd32'
     }
   ];
 
@@ -211,12 +211,12 @@ export class NocComponent implements OnInit {
   public ocjuntoData: ChartDataSets[] = [{ data: [] }];
   public ocjuntoColors: Array<any> = [
     { // first color
-      backgroundColor: '#1e3799',
-      borderColor: '#1e3799',
-      pointBackgroundColor: '#1e3799',
+      backgroundColor: '#0097e6',
+      borderColor: '#0097e6',
+      pointBackgroundColor: '#0097e6',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: '#1e3799'
+      pointHoverBorderColor: '#0097e6'
     }
   ];
 
@@ -240,12 +240,12 @@ export class NocComponent implements OnInit {
   public ocvivoData: ChartDataSets[] = [{ data: [] }];
   public ocvivoColors: Array<any> = [
     { // first color
-      backgroundColor: '#1e3799',
-      borderColor: '#1e3799',
-      pointBackgroundColor: '#1e3799',
+      backgroundColor: '#8c7ae6',
+      borderColor: '#8c7ae6',
+      pointBackgroundColor: '#8c7ae6',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: '#1e3799'
+      pointHoverBorderColor: '#8c7ae6'
     }
   ];
 
@@ -269,12 +269,12 @@ export class NocComponent implements OnInit {
   public ocseaData: ChartDataSets[] = [{ data: [] }];
   public ocseaColors: Array<any> = [
     { // first color
-      backgroundColor: '#1e3799',
-      borderColor: '#1e3799',
-      pointBackgroundColor: '#1e3799',
+      backgroundColor: '#40739e',
+      borderColor: '#40739e',
+      pointBackgroundColor: '#40739e',
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
-      pointHoverBorderColor: '#1e3799'
+      pointHoverBorderColor: '#40739e'
     }
   ];
 

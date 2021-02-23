@@ -172,8 +172,8 @@
           </canvas>
         </div>
       </div>
+      <br>
       <div class="row">
-
         <div class="col-xl-6 col-lg-6">
           <h5 class="font-weight-bold">BRAVA</h5>
           <canvas baseChart [datasets]="ocbravaData" [labels]="ocbravaLabels" [options]="ocbravaOptions"
@@ -218,7 +218,7 @@
                 <tr *ngFor="let item of ocorrencia">
                   <td>{{item.descricao}}</td>
                   <td>{{item.problema}}</td>
-                  <td class="text-right">{{item.dtinicio | date: 'dd/MM/yyyy - HH:mm'}}</td>
+                  <td class="text-right">{{item.day}}/{{item.month}}/{{item.ano}} {{item.hora}}:{{item.min}}</td>
                 </tr>
               </tbody>
             </table>
