@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { AppConstants } from '../app-constants';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TorresService {
-  public url = 'http://10.200.2.136:3333/' + 'torres'
-  public radios = 'http://10.200.2.136:3333/' + 'radios'
-  public equipamentos = 'http://10.200.2.136:3333/' + 'equipamentos';
-  public resumo = 'http://10.200.2.136:3333/' + 'resumo';
+  public url = AppConstants.baseUrl + 'torres'
+  public radios = AppConstants.baseUrl + 'radios'
+  public equipamentos = AppConstants.baseUrl + 'equipamentos';
+  public resumo = AppConstants.baseUrl + 'resumo';
 
   constructor(private http: HttpClient) { }
 
@@ -31,10 +32,10 @@ export class TorresService {
     return this.http.get(this.url + '-med');
   }
 
-  getConexaoAtm(){return this.http.get('http://10.200.2.136:3333/' + 'total-conexoes-atm')}
-  getConexaoBn(){return this.http.get('http://10.200.2.136:3333/' + 'total-conexoes-bn')}
-  getConexaoMed(){return this.http.get('http://10.200.2.136:3333/' + 'total-conexoes-med')}
-  getNumConexoes(id){return this.http.get(`${'http://10.200.2.136:3333/'}torres/conexoes/${id}`)}
+  getConexaoAtm(){return this.http.get(AppConstants.baseUrl + 'total-conexoes-atm')}
+  getConexaoBn(){return this.http.get(AppConstants.baseUrl + 'total-conexoes-bn')}
+  getConexaoMed(){return this.http.get(AppConstants.baseUrl + 'total-conexoes-med')}
+  getNumConexoes(id){return this.http.get(`${AppConstants.baseUrl}torres/conexoes/${id}`)}
 
   getResumoRadios() {
     return this.http.get(this.resumo + '-radios')

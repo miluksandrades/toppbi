@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { AppConstants } from '../app-constants';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AtendimentoService {
 
-  public base_url = 'http://10.200.2.136:3333/';
+  public base_url = AppConstants.baseUrl;
 
   constructor(private http: HttpClient) { }
 

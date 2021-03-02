@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+
 import { HttpClient } from '@angular/common/http';
+import { AppConstants } from '../app-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RelatoriosService {
 
-  public url = 'http://10.200.2.136:3333/'
+  public url = AppConstants.baseUrl
 
   constructor(private http: HttpClient) { }
 

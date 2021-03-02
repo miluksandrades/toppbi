@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment'
 import { HttpClient } from '@angular/common/http';
+import { AppConstants } from '../app-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlanosService {
 
-  public planos_url = 'http://10.200.2.136:3333/' + 'planos';
+  public planos_url = AppConstants.baseUrl + 'planos';
 
   constructor(private http: HttpClient) {}
 

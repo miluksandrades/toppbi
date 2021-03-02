@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+
 import { HttpClient } from '@angular/common/http';
+import { AppConstants } from '../app-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SuporteService {
 
-  public url_canc = 'http://10.200.2.136:3333/' + 'cancelamento'
-  public url_ret = 'http://10.200.2.136:3333/' + 'retencao'
-  public url_mig = 'http://10.200.2.136:3333/' + 'migracao'
-  public url_mudend = 'http://10.200.2.136:3333/' + 'mudendereco'
-  public url_mudplan = 'http://10.200.2.136:3333/' + 'mudplano'
+  public url_canc = AppConstants.baseUrl + 'cancelamento'
+  public url_ret = AppConstants.baseUrl + 'retencao'
+  public url_mig = AppConstants.baseUrl + 'migracao'
+  public url_mudend = AppConstants.baseUrl + 'mudendereco'
+  public url_mudplan = AppConstants.baseUrl + 'mudplano'
 
   constructor(private http: HttpClient) { }
 

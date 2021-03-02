@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { AppConstants } from '../../app-constants';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DadosService {
 
-  public url = 'http://10.200.2.136:3333/'
+  public url = AppConstants.baseUrl
 
   constructor(private http: HttpClient) { }
 

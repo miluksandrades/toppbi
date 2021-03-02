@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { AppConstants } from '../app-constants';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FrotasService {
   
-  url_frota = 'http://10.200.2.136:3333/' + 'frota/'
-  base_url = 'http://10.200.2.136:3333/';
+  url_frota = AppConstants.baseUrl + 'frota/'
+  base_url = AppConstants.baseUrl;
 
   constructor(private http: HttpClient) { }
 
